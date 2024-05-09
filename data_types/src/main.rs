@@ -30,8 +30,10 @@ fn main() {
     let y = float_point().1;
     println!("Float 64 is {x} and 32 is {y}");
 
-    let add = math("div",5,10);
+    let add = math(1,5.0,10.0);
+    let div = math(2,56.7,32.2);
     println!("Add result is {add}");
+    println!("Division result is {div}");
 }
 
 fn float_point() -> (f64, f32) {
@@ -40,12 +42,12 @@ fn float_point() -> (f64, f32) {
     return (x,y)
 }
 
-fn math(operation: &str, a: i32, b: i32) -> i32 {
+fn math(operation: u8, a: f32, b: f32) -> f32 {
     match operation{
-	add => a + b,
-	div => a / b,
-	sub => a - b,
-	mul => a * b,
-	_=> panic!{""}
+	1 => a + b,
+	2 => a / b,
+	3 => a - b,
+	4 => a * b,
+	_=> panic!{"Learn to code properly"}
     }
 }
