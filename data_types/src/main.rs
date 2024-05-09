@@ -1,3 +1,5 @@
+use std::fmt;
+
 /*
 <integers>
 Lengh    Signed    Unsigned
@@ -23,7 +25,15 @@ In release mode, wraping ocurr.
 Float points
 f32 -> 32bits
 f64 -> 64bits
-*/
+
+Boolean can be either true or false:
+let t = true;
+let f: bool = false;
+
+char is a single character with single quotes ''
+let z: char = 'Z'
+
+ */
 
 fn main() {
     let x = float_point().0;
@@ -32,8 +42,14 @@ fn main() {
 
     let add = math(1,5.0,10.0);
     let div = math(2,56.7,32.2);
+    let sub = math(3,95.5,4.3);
+    let pro = math(4,4.0,30.0);
     println!("Add result is {add}");
     println!("Division result is {div}");
+    println!("Subtraction result is {sub}");
+    println!("Product result is {pro}");
+    let tup = Tup {x: 500, y: 6.4, z: 1};
+    println!("{}{1}",tup.to_string(),Tup::y);
 }
 
 fn float_point() -> (f64, f32) {
@@ -49,5 +65,17 @@ fn math(operation: u8, a: f32, b: f32) -> f32 {
 	3 => a - b,
 	4 => a * b,
 	_=> panic!{"Learn to code properly"}
+    }
+}
+
+struct Tup {
+    x: i32,
+    y: f64,
+    z: u8
+}
+
+impl fmt::Display for Tup {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+	write!(f, "Tuple is {}", self.x)
     }
 }
