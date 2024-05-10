@@ -48,14 +48,30 @@ fn main() {
     println!("Division result is {div}");
     println!("Subtraction result is {sub}");
     println!("Product result is {pro}");
-    let tup = Tup {x: 500, y: 6.4, z: 1};
-    println!("x: {}, y:{} and z:{}",tup.x, tup.y, tup.z);
+    println!("Addition from module is {}", op::add(1,2));
+    let struc = Struc {x: 500, y: 6.4, z: 1};
+    let tuple = (500, 6.4, 1);
+    let (_a, _b, _c) = tuple;
+    println!("x: {}, y:{} and z:{}",struc.x, struc.y, struc.z);
+    println!("Indirect access of the tuple:{_b}");
+    println!("Direct access of the tuple is dot + index:{}", tuple.1);
+    let arr = Arr();
+    println!("Direct access of the array element is [index]:{}", arr[3]);
 }
 
 fn float_point() -> (f64, f32) {
     let x = 2.1; // f64
     let y: f32 = 3.2;
     return (x,y)
+}
+
+mod op {
+    pub fn add (a: i32, b: i32) -> i32 {
+	a + b
+    }
+    pub fn sub (a:i32 , b: i32) -> i32 {
+	a - b
+    }
 }
 
 fn math(operation: u8, a: f32, b: f32) -> f32 {
@@ -68,10 +84,15 @@ fn math(operation: u8, a: f32, b: f32) -> f32 {
     }
 }
 
-struct Tup {
+struct Struc {
     x: i32,
     y: f64,
     z: u8
+}
+
+fn Arr() -> [i32;5] {
+    let a: [i32; 5] = [1,2,3,4,5];
+    return a;
 }
 
 /*
