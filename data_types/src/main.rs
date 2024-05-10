@@ -1,4 +1,4 @@
-use std::fmt;
+// use std::fmt; part of impl
 
 /*
 <integers>
@@ -49,7 +49,7 @@ fn main() {
     println!("Subtraction result is {sub}");
     println!("Product result is {pro}");
     let tup = Tup {x: 500, y: 6.4, z: 1};
-    println!("{}{1}",tup.to_string(),Tup::y);
+    println!("x: {}, y:{} and z:{}",tup.x, tup.y, tup.z);
 }
 
 fn float_point() -> (f64, f32) {
@@ -74,8 +74,10 @@ struct Tup {
     z: u8
 }
 
+/*
 impl fmt::Display for Tup {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 	write!(f, "Tuple is {}", self.x)
     }
 }
+*/
