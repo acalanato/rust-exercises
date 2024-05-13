@@ -1,6 +1,6 @@
-//use std::fmt;
+use std::fmt;
 
-//struct Y_exp(i32);
+struct Structure(i64,i64);
 
 fn main() {
     println!("Hello, world!");
@@ -9,7 +9,8 @@ fn main() {
 
     measure(5, 'h');
     let y = y_exp();
-    print!("{y}");
+    println!("{y}");
+//    println!("{}", Structure)
 }
 
 fn another_function(x: i32) {
@@ -28,10 +29,10 @@ fn y_exp() -> i32 {
     return y;
 }
 
-/*
-impl fmt::Display for y_exp {
+
+impl fmt::Display for Structure {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-	write!(f, "{}", self.0)
+	write!(f, "{}", self)
     }
 }
-*/
+
