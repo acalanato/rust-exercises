@@ -1,7 +1,6 @@
-
 fn main() {
-    //let input = [17.0, 16.0, 16.0, 16.0, 16.0, 15.0, 17.0, 17.0, 15.0, 5.0, 17.0, 17.0, 16.0];
-    let input = [];
+    //let input = [17.0, 16.0, 16.0, 16.0, 16.0, 15.0, 17.0, 17.0, 15.0, 5.0, 17.0, 17.0, 16.0]; //works
+    let input = [1.0, 1.2, 1.0, 0.0, 18.0];
     let out = find_average(&input);
     println!("{}", out);
 }
@@ -14,11 +13,22 @@ fn find_average(slice: &[f64]) -> f64 {
         i += 1.0 * x/x;
     }
     out  = out / i as f64;
-    if i == 0.0 {out = 0.0}
-    return out
+    if i == 0.0 {out = 0.0};
+    if out.is_nan() {out = 0.0};
+    return out;
 }
 
+
+
 /*
+
+fn find_average(xs: &[f64]) -> f64 {
+    match xs.len() {
+        0 => 0.,
+        n => xs.iter().sum::<f64>() / n as f64
+    }
+}
+
 mod tests {
     use crate::find_average;
 
