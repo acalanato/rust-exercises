@@ -1,7 +1,9 @@
+use std::io::Read;
+
 fn main() {
     let test_a = digitize(349587);
-    let test_b = digitize(35231);
-    let test_c = digitize(0);
+//    let test_b = digitize(35231);
+//    let test_c = digitize(0);
     println!("{test_a} {test_b} {test_c}");
 }
 
