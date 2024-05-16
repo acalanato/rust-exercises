@@ -1,20 +1,35 @@
-
-
 fn main() {
-    let test_a = digitize(349587);
-    let test_b = digitize(35231);
-    let test_c = digitize(0);
-    println!("{test_a:?}\n{test_b:?}\n{test_c:?}");
+    let a = 349587;
+    let b = 35231;
+    let c = 0;
+    let d_a = digitize(a);
+    let d_b = digitize(b);
+    let d_c = digitize(0);
+    let s_a = stringer(a);
+    let s_b = stringer(b);
+    let s_c = stringer(c);
+    println!("{s_a:?} {d_a:?}\n{s_b:?} {d_b:?}\n{s_c:?} {d_c:?}");
 }
 
+fn stringer(n: u64) -> String {
+    return n.to_string().chars().rev().collect();
+}
 
 fn digitize(n: u64) -> Vec<u8> {
     let s: String = n.to_string().chars().rev().collect();
-    return s.as_bytes().to_vec().to_ascii_lowercase();
+    return s.into_bytes();
+//    let out: [u8;5] =  s.try_into().unwrap();
+//    return out.to_owned()
 }
 
 
+
 /*
+
+fn reverse(in: Vec){
+    let reverse: [i64; 5] = in.iter().rev().collect();
+    
+}
 fn digitize(n: u64) -> Vec<u64> {
     let mut out = Vec::new();
     let mut _last = 0;
