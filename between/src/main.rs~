@@ -1,0 +1,8 @@
+fn main() {
+    between(1, 15);
+    println!();
+}
+
+fn between(a: i16, b: i16) -> Vec<i16> {
+    unimplemented!()
+}
