@@ -1,3 +1,5 @@
+// fn d_ch on line 36 was writen by @bronzelle from discord
+
 fn main() {
     let a = 349587;
     let b = 35231;
@@ -8,7 +10,15 @@ fn main() {
     let s_a = stringer(a);
     let s_b = stringer(b);
     let s_c = stringer(c);
-    println!("{s_a:?} {d_a:?}\n{s_b:?} {d_b:?}\n{s_c:?} {d_c:?}");
+    print!("
+{s_a:?} {d_a:?}
+{s_b:?} {d_b:?}
+{s_c:?} {d_c:?}
+
+Sugestão do colega:
+in  {a}
+out {:?}
+", d_ch(a));
 }
 
 fn stringer(n: u64) -> String {
@@ -18,10 +28,15 @@ fn stringer(n: u64) -> String {
 fn digitize(n: u64) -> Vec<u8> {
     let s: String = n.to_string().chars().rev().collect();
     return s.into_bytes();
+    //    return x;
 //    let out: [u8;5] =  s.try_into().unwrap();
 //    return out.to_owned()
 }
 
+fn d_ch (n: u64) -> Vec<u8> {
+    let s: String = n.to_string();
+    s.chars().rev().map(|c| (c as u8) - 48).collect::<Vec<_>>()
+}
 
 
 /*
