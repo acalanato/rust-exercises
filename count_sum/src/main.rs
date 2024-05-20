@@ -22,7 +22,7 @@ fn main() {
     assert_eq!(count_positives_sum_negatives(i), [0, 0]);
 
 
-    let x = vec![];
+    let x = vec![-633];
     let y = count_positives_sum_negatives(x);
     println!("{:?}", y);
 }
@@ -37,9 +37,28 @@ fn count_positives_sum_negatives(input: Vec<i32>) -> Vec<i32> {
             out[1] += x;
         };
     }
-    if out[0] + out[1] == 0 && out.len() < 2 {
+    if input.len() == 0 {
         return vec![];
+    } else if  out[0] + out[1] == 0 {
+        return vec![0, 0]
     } else {
         return out;
     }
 }
+
+/*
+fn count_positives_sum_negatives(input: Vec<i32>) -> Vec<i32> {
+  if input.is_empty() {
+  	return vec![];
+  }
+
+	input.iter().fold(vec![0, 0], |mut acc, &x| {
+    	if x > 0 {
+        acc[0] += 1;
+      } else {
+        acc[1] += x;
+      }
+      acc
+	})
+}
+*/
