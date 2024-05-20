@@ -1,0 +1,13 @@
+
+fn main() {
+    let c = count_sheep(10);
+    println!("{c}");
+}
+
+fn count_sheep(n: u32) -> String {
+    let mut c = String::from("");
+    for x in 0..n {
+        (x as u8).to_string().push_str("sheep...");
+    }
+    return c;
+}
