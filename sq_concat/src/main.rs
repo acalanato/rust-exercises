@@ -5,6 +5,15 @@ fn main() {
 }
 
 
+/*
+fn square_digits(num: u64) -> u64 {
+    let mut out = 0;
+    for x in 1..num {
+        out += num / x
+    }
+    return out;
+}
+
 fn square_digits(num: u64) -> u64 {
     let mut n = num;
     let mut i = 0;
@@ -20,15 +29,16 @@ fn square_digits(num: u64) -> u64 {
 //    num.next_power_of_two()
 //    return num;
 
+*/
 
-/*
 fn square_digits(num: u64) -> u64 {
     let binding = num.to_string();
     let s = binding.chars().filter_map(|x| x.to_digit(10));
-    let mut sq = Vec::new();
+    let mut out = Vec::new();
     for x in s.into_iter() {
-        sq.push(x * x);
+        out.push(x * x);
     };
-    return out;
+    out.into_iter().map(|x| u64::from(x) ).collect();
+    return from(out: u64);
 }
-*/
+
