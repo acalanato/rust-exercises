@@ -1,3 +1,4 @@
+use std::{convert::TryFrom, iter::Cloned};
 
 fn main() {
     let x = square_digits(9119);
@@ -38,7 +39,9 @@ fn square_digits(num: u64) -> u64 {
     for x in s.into_iter() {
         out.push(x * x);
     };
-    out.into_iter().map(|x| u64::from(x) ).collect();
-    return from(out: u64);
+    //    out.into_iter().map(|x| u64::from(x) ).collect();
+    //    return from(out: u64);
+    //    return u64::from(out)
+    //    return out.iter().map(|c| *c ).collect();
+    return out;
 }
-
