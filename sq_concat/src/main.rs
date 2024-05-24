@@ -1,8 +1,33 @@
-use std::{convert::TryFrom, iter::Cloned};
 
 fn main() {
-    let x = square_digits(9119);
+//    let x = square_digits(9119);
+    let x = isolate(9119);
     println!("{x:?}");
+}
+
+fn square_digits(num: u64) -> u64 {
+    let a: u32 = num as u32;
+    let b: u64 = a as u64;
+    return b;
+}
+
+fn isolate(num: u64) {
+//    let num: u32 = 1048572;
+    let mut i = num;
+    
+    let mut digits = Vec::new();
+    
+    while i > 0 {
+        let digit = i % 10;
+        digits.push(digit);
+        i /= 10;
+    }
+    
+    digits.reverse();
+    
+    for digit in digits {
+        println!("{}", digit);
+    }
 }
 
 
@@ -30,7 +55,7 @@ fn square_digits(num: u64) -> u64 {
 //    num.next_power_of_two()
 //    return num;
 
-*/
+
 
 fn square_digits(num: u64) -> u64 {
     let binding = num.to_string();
@@ -45,3 +70,5 @@ fn square_digits(num: u64) -> u64 {
     //    return out.iter().map(|c| *c ).collect();
     return out;
 }
+ */
+
