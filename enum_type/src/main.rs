@@ -20,6 +20,22 @@ enum Message {
     ChangeColor(i32, i32, i32),
 }
 
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+
 /*
 enum Option<T> {
     None,
@@ -60,6 +76,7 @@ fn main() {
     let some_string = Some(String::from("Easypeasy"));
     let absent_value: Option<i32> = None;
 
+    
     print!("
 Some number:\t{:?}
 Some char:\t{:?}
@@ -69,5 +86,18 @@ Not null:\t{:?}\n",
            some_char,
            some_string,
            absent_value
-    )
+    );
+
+    print!("
+A penny:\t{}
+A nickel:\t{}
+A dime: \t{}
+One quarter:\t{}\n",
+           value_in_cents(Coin::Penny),
+           value_in_cents(Coin::Nickel),
+           value_in_cents(Coin::Dime),
+           value_in_cents(Coin::Quarter)
+
+    );
+    
 }
