@@ -20,6 +20,24 @@ enum Message {
     ChangeColor(i32, i32, i32),
 }
 
+
+#[derive(Debug)]
+#[allow(dead_code)]
+enum EstadoBr {
+    Acre,
+    Ceará,
+    Bahia,
+    SãoPaulo(CidadeBr),
+}
+
+#[derive(Debug)]
+#[allow(dead_code)]
+enum CidadeBr {
+    Atibaia,
+    Bragança,
+    Campinas,
+}
+
 enum Coin {
     Penny,
     Nickel,
@@ -33,6 +51,19 @@ fn value_in_cents(coin: Coin) -> u8 {
         Coin::Nickel => 5,
         Coin::Dime => 10,
         Coin::Quarter => 25,
+    }
+}
+
+#[allow(dead_code)]
+fn estado_cidade(cidade: EstadoBr) -> String {
+    match  cidade {
+        EstadoBr::Acre => String::from("Bujari"),
+        EstadoBr::Bahia => String::from("Amargosa"),
+        EstadoBr::Ceará => String::from("Cascavel"),
+        EstadoBr::SãoPaulo(estado) => {
+            println!("Estado de São Paulo:{:?}", estado);
+            String::from("Atibaia")
+        }
     }
 }
 
@@ -99,5 +130,6 @@ One quarter:\t{}\n",
            value_in_cents(Coin::Quarter)
 
     );
-    
+    let cidade = estado_cidade(EstadoBr::SãoPaulo(CidadeBr::Atibaia));
+    println!("{}", cidade)
 }
