@@ -1,16 +1,21 @@
 
 fn main() {
-//    let x = square_digits(9119);
-    let x = isolate(9119);
+    let x = square_digits(9119);
+//    let x = isolate(9119);
     println!("{x:?}");
 }
 
-fn square_digits(num: u64) -> u64 {
-    let a: u32 = num as u32;
-    let b: u64 = a as u64;
-    return b;
+fn square_digits(num: u64) {
+    let mut out = num;
+    let mut c = 1;
+    let n = while out > 10 {out /= 10;c += 1;};
+    while c != 0 {
+        todo!();
+    }
+    println!("{:#?}", out)
 }
 
+/*
 fn isolate(num: u64) {
 //    let num: u32 = 1048572;
     let mut i = num;
@@ -31,7 +36,7 @@ fn isolate(num: u64) {
 }
 
 
-/*
+
 fn square_digits(num: u64) -> u64 {
     let mut out = 0;
     for x in 1..num {
