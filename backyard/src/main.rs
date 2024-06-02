@@ -6,14 +6,15 @@ pub mod garden;
 fn main() {
     let plant = Asparagus {};
     println!("I'm growing {:?}", plant);
-    print_structure()
+    print_structure();
+    
 }
 
 
 fn print_structure(){
 
     print!("
-Project structure:
+Project structure so far:
 crate
  └── front_of_house
      ├── hosting
