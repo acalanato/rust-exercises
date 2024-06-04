@@ -1,1 +1,0 @@
-/home/vagner/Repositories/rust-exercises/game_loop/target/debug/game_loop: /home/vagner/Repositories/rust-exercises/game_loop/src/lib.rs /home/vagner/Repositories/rust-exercises/game_loop/src/main.rs /home/vagner/Repositories/rust-exercises/game_loop/src/quest1/choice.rs /home/vagner/Repositories/rust-exercises/game_loop/src/quest1.rs
