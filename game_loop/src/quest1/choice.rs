@@ -1,6 +1,6 @@
 #[derive(Debug)]
-pub enum Question {
-    Ask,
-    Right,
-    Wrong,
+pub struct Asking {
+    ask: String,
+    right: String,
+    wrong: String,
 }

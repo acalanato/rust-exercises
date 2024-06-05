@@ -1,4 +1,4 @@
-pub mod choice {
+pub mod question {
     use std::io;
     pub fn between_two(opt1: String, opt2: String) {
         loop {
@@ -15,9 +15,10 @@ pub mod choice {
             }
         }
     }
-
-    /* i want to feed a struct into this function
-    pub fn gen_choice(Question) {
+    
+    // i want to feed a struct into this function
+    /*
+    pub fn gen_choice(question: Question) {
         loop {
             let mut choice = String::new();
             println!("Escolha uma opção:\n1-) Viver\n2-) Morrer");
@@ -31,6 +32,6 @@ pub mod choice {
                 _ => {println!("Você escolheu {} e se juntar ao Olavo", opt2); break},
             }
         }
-    }
-    */
+    }   
+*/
 }
