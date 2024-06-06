@@ -7,6 +7,11 @@ pub mod question {
         pub wrong: String,
     }
 
+    pub enum Asking2 {
+        Ask(String),
+        Right,
+        Wrong,
+    }
     
     pub fn between_two(opt1: String, opt2: String) {
         loop {
@@ -27,7 +32,6 @@ pub mod question {
     pub fn gen_choice(question: Asking) {
         loop {
             let mut choice = String::new();
-//            println!("Escolha uma opção:\n1-) Viver\n2-) Morrer");
             print!("{}\n", question.ask);
             io::stdin().read_line(&mut choice).expect("Tente novamente");
             let choice: i32 = match  choice.trim().parse() {
@@ -39,6 +43,22 @@ pub mod question {
                 _ => {println!("{}\n", question.wrong); break},
             }
         }
-    }   
+    }
 
+    //
+    pub fn gen_choice2(question: Asking2) {
+        loop {
+            let mut choice = String::new();
+            print!("{}\n", question.ask);
+            io::stdin().read_line(&mut choice).expect("Tente novamente");
+            let choice: i32 = match  choice.trim().parse() {
+                Ok(choice) => choice,
+                Err(_) => continue,
+            };
+            match choice {
+                1 => {println!("{}\n", question.right);  continue},
+                _ => {println!("{}\n", question.wrong); break},
+            }
+        }
+    }
 }
