@@ -1,5 +1,13 @@
 pub mod question {
     use std::io;
+
+    pub struct Asking {
+        pub ask: String,
+        pub right: String,
+        pub wrong: String,
+    }
+
+    
     pub fn between_two(opt1: String, opt2: String) {
         loop {
             let mut choice = String::new();
@@ -16,22 +24,21 @@ pub mod question {
         }
     }
     
-    // i want to feed a struct into this function
-    /*
-    pub fn gen_choice(question: Question) {
+    pub fn gen_choice(question: Asking) {
         loop {
             let mut choice = String::new();
-            println!("Escolha uma opção:\n1-) Viver\n2-) Morrer");
+//            println!("Escolha uma opção:\n1-) Viver\n2-) Morrer");
+            print!("{}\n", question.ask);
             io::stdin().read_line(&mut choice).expect("Tente novamente");
             let choice: i32 = match  choice.trim().parse() {
                 Ok(choice) => choice,
                 Err(_) => continue,
             };
             match choice {
-                1 => {println!("Você escolheu {}", opt1);  continue},
-                _ => {println!("Você escolheu {} e se juntar ao Olavo", opt2); break},
+                1 => {println!("{}\n", question.right);  continue},
+                _ => {println!("{}\n", question.wrong); break},
             }
         }
     }   
-*/
+
 }

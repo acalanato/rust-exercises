@@ -1,6 +1,8 @@
+/*
 #[derive(Debug)]
 pub struct Asking {
-    ask: String,
-    right: String,
-    wrong: String,
+    pub ask: String,
+    pub right: String,
+    pub wrong: String,
 }
+*/
