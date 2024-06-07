@@ -7,10 +7,19 @@ pub mod question {
         pub wrong: String,
     }
 
+    pub struct Questions(pub String, pub String, pub String);
+
+/*
+    pub fn question_packer (a: String, b:String, c: String) -> (String, String, String) {
+        let tuple: (String, String, String) = (a, b, c);
+        return tuple
+    }
+*/
+    
     pub enum Asking2 {
         Ask(String),
-        Right,
-        Wrong,
+        Right(String),
+        Wrong(String),
     }
     
     pub fn between_two(opt1: String, opt2: String) {
@@ -46,18 +55,18 @@ pub mod question {
     }
 
     //
-    pub fn gen_choice2(question: Asking2) {
+    pub fn gen_choice2(q: Questions) {
         loop {
             let mut choice = String::new();
-            print!("{}\n", question.ask);
+            print!("{}\n", q.0);
             io::stdin().read_line(&mut choice).expect("Tente novamente");
             let choice: i32 = match  choice.trim().parse() {
                 Ok(choice) => choice,
                 Err(_) => continue,
             };
             match choice {
-                1 => {println!("{}\n", question.right);  continue},
-                _ => {println!("{}\n", question.wrong); break},
+                1 => {println!("{}\n", q.1);  continue},
+                _ => {println!("{}\n", q.2); break},
             }
         }
     }
