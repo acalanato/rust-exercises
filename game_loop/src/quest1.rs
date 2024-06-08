@@ -8,10 +8,13 @@ pub mod question {
     }
 
     
-    pub enum Asking2 {
-        Ask(String),
-        Right(String, String),
-        Wrong(String, String),
+    pub struct  Asking2 {
+        pub ask: String,
+        pub a: (String, String, bool),
+        pub b: (String, String, bool),
+        pub c: (String, String, bool),
+        pub d: (String, String, bool),
+        pub e: (String, String, bool),
     }
     
     pub fn between_two(opt1: String, opt2: String) {
@@ -29,39 +32,25 @@ pub mod question {
             }
         }
     }
-    
-    pub fn gen_choice(question: Asking) {
+
+        pub fn between_multi(opt: Asking2) {
         loop {
             let mut choice = String::new();
-            print!("{}\n", question.ask);
+            println!("{}", opt.ask);
             io::stdin().read_line(&mut choice).expect("Tente novamente");
             let choice: i32 = match  choice.trim().parse() {
                 Ok(choice) => choice,
                 Err(_) => continue,
             };
             match choice {
-                1 => {println!("{}\n", question.right);  continue},
-                _ => {println!("{}\n", question.wrong); break},
+                1 => {println!("{}", opt.a.1); if opt.a.2 == true {break}},
+                2 => {println!("{}", opt.b.1); if opt.b.2 == true {break}},
+                3 => {println!("{}", opt.c.1); if opt.c.2 == true {break}},
+                4 => {println!("{}", opt.d.1); if opt.d.2 == true {break}},
+                5 => {println!("{}", opt.e.1); if opt.e.2 == true {break}},
+                _ => {println!("Invalid answer, try again!"); continue},
             }
         }
     }
 
-/*
-    pub fn gen_choice2(q: Questions) {
-        loop {
-            let mut choice = String::new();
-            print!("{}\n", q.0);
-            io::stdin().read_line(&mut choice).expect("Tente novamente");
-            let choice: i32 = match  choice.trim().parse() {
-                Ok(choice) => choice,
-                Err(_) => continue,
-            };
-            match choice {
-                1 => {println!("{}\n", q.1);  continue},
-                _ => {println!("{}\n", q.2); break},
-            }
-        }
-    }
-*/
 }
-    
