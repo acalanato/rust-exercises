@@ -1,0 +1,5 @@
+
+pub fn question_packer (a: &str, b: &str, c: &str) -> (String, String, String) {
+        let tuple: (String, String, String) = (a.to_string(), b.to_string(), c.to_string());
+        return tuple
+    }
