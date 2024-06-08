@@ -10,7 +10,7 @@ pub mod question {
     pub struct Questions(pub String, pub String, pub String);
 
 /*
-    pub fn question_packer (a: String, b:String, c: String) -> (String, String, String) {
+    pub fn question_packer (a: str, b:str, c: str) -> (String, String, String) {
         let tuple: (String, String, String) = (a, b, c);
         return tuple
     }
@@ -54,7 +54,6 @@ pub mod question {
         }
     }
 
-    //
     pub fn gen_choice2(q: Questions) {
         loop {
             let mut choice = String::new();
