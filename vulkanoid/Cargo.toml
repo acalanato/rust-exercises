@@ -1,0 +1,8 @@
+[package]
+name = "vulkanoid"
+version = "0.1.0"
+authors = ["Acalanato"]
+edition = "2021"
+
+[dependencies]
+sdl2 = "0.32.1"
