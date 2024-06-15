@@ -1,7 +1,9 @@
-use core::fmt;
 
 
 fn main() {
+    use std::fmt;
+
+    
     let mut v = vec![1, 2, 3, 4, 5];
     
     let mut e = (6..=8).collect();
@@ -32,18 +34,22 @@ fn main() {
         Float(f64),
         Text(String),
     }
-/*
+
     impl fmt::Display for SpreadSheet {
         fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-            write!(f, "{}", &self)
+            // write!(f, "{}", &self)
+            match self {
+                SpreadSheet::Int(x) => x.fmt(f),
+                SpreadSheet::Float(y) => y.fmt(f),
+                SpreadSheet::Text(z) => z.fmt(f),
+            }
         }
     }
-*/    
+    
     let row = vec![
         SpreadSheet::Int(3),
         SpreadSheet::Text(String::from("banana")),
         SpreadSheet::Float(10.34)
     ];
-
-    println!("Row: {:?}, Colum: {:?}, Text: {:?}", row[0], row[1], row[2])
+        println!("Row: {}, Colum: {}, Text: {}", row[0], row[1], row[2])
 }
