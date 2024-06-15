@@ -9,10 +9,32 @@ fn main() {
     let third: &i32 = &v[2];
     println!("The third element is {third}");
 
-    let third: Option<&i32> = v.get(2);
+    let third: Option<&i32> = v.get(2); //get return None instead of panic
     match third {
         Some(third) => println!("The third element is {third}"),
         None => println!("There is no third element."),
     }
-    println!("{:?}", v)
+
+    for i in &mut v {
+        *i += 5
+    }
+    
+    for i in v {
+        println!("{}", i)
+    }
+
+    #[allow(dead_code)]
+    #[derive(Debug)]
+    enum SpreadSheet {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+    let row = vec![
+        SpreadSheet::Int(3),
+        SpreadSheet::Text(String::from("banana")),
+        SpreadSheet::Float(10.34)
+    ];
+
+    println!("Row: {:?}, Colum: {:?}, Text: {:?}", row[0], row[1], row[2])
 }
