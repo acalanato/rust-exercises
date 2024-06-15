@@ -1,3 +1,5 @@
+use core::fmt;
+
 
 fn main() {
     let mut v = vec![1, 2, 3, 4, 5];
@@ -30,6 +32,13 @@ fn main() {
         Float(f64),
         Text(String),
     }
+/*
+    impl fmt::Display for SpreadSheet {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            write!(f, "{}", &self)
+        }
+    }
+*/    
     let row = vec![
         SpreadSheet::Int(3),
         SpreadSheet::Text(String::from("banana")),
