@@ -1,0 +1,48 @@
+use std::fs::File;
+use std::{error, fs};
+use std::io::{read_to_string, ErrorKind, Read};
+
+fn read_from_f () -> String {
+    let file_path = "my_file.txt";
+    let my_file_result = File::open(file_path);
+
+    let _my_file = match my_file_result {
+        Ok(file) => {println!("{:?}",file);
+                     return fs::read_to_string(file_path).expect("fdp")},
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create(file_path) {
+                Ok(fc) => fc,
+                Err(e) => panic!("Problem creating file: {e:?}"),
+            },
+            other_error => {
+                panic!("Other errors: {other_error:?}")
+            }
+        },
+                
+    };
+    return "You must mess up real bad to see this message".to_string();
+}
+
+/* < Doesn't work for reading to string >
+fn read_f_too () -> String {
+    let file_path = "my_file.txt";
+    let my_file = fs::read_to_string(file_path).unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("my_file.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file: {error:?}");
+            })
+        } else {
+            panic!("Problem opening the file: {error:?}");
+        }
+    });
+    return "".to_string()
+}
+*/
+fn main() {
+    //    panic!("crash with success!");
+    //    let v = vec![3, 2, 1];
+    //    v[10];
+    let s = read_from_f();
+    println!("{}", s);
+    //println!("add RUST_BACKTRACE=1 to env in order to backtrace");
+}
