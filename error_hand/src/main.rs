@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::{error, fs};
+use std::{error, fs, io};
 use std::io::{read_to_string, ErrorKind, Read};
 
 fn read_from_f () -> String {
@@ -23,6 +23,21 @@ fn read_from_f () -> String {
     return "You must mess up real bad to see this message".to_string();
 }
 
+fn read_file_error() -> Result<String, io::Error> {
+    let username_file_result = File::open("not_present.txt");
+
+    let mut username_file = match username_file_result {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };
+
+    let mut username = String::new();
+    match username_file.read_to_string(&mut username) {
+        Ok(_) => Ok(username),
+        Err(e) => Err(e),
+    }
+}
+
 /* < Doesn't work for reading to string >
 fn read_f_too () -> String {
     let file_path = "my_file.txt";
@@ -44,5 +59,8 @@ fn main() {
     //    v[10];
     let s = read_from_f();
     println!("{}", s);
+
+    let greeting_file = File::open("missing_file.txt")
+        .expect("file not inclued in project");
     //println!("add RUST_BACKTRACE=1 to env in order to backtrace");
 }
