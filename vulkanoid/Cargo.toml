@@ -5,6 +5,8 @@ authors = ["Acalanato"]
 edition = "2021"
 
 [dependencies]
+specs = "0.14"
+specs-derive = "0.4"
 
 [dependencies.sdl2]
 version = "0.32.1"
