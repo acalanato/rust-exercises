@@ -79,6 +79,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let s = read_from_f();
     println!("{}", s);
 
+    
     let _greeting_file = File::open("missing_file.txt")
         .expect("file not inclued in project");
 
