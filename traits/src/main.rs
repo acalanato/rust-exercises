@@ -3,7 +3,7 @@
 //behavior in an abstract way. We can use trait bounds to
 //specify that a generic type can be any type that has certain behavior.
 
-use aggregator::{Summary, Tweet};
+use aggregator::{NewsArticle, Summary, Tweet};
 
 fn main() {
     let tweet = Tweet {
@@ -15,4 +15,14 @@ fn main() {
         retweet: false,
     };
     println!("1 new xweet: {}", tweet.summarize());
+
+    let article = NewsArticle {
+        headline: String::from("Capivaras voadoras"),
+        location: String::from("Brumenau"),
+        author: String::from("John Doe"),
+        content: String::from(
+            "Capivaras atacaram um evento gospel, seria um sinal do fim dos tempos?"
+        ),
+    };
+    println!("New article available! {}", article.summarize());
 }
