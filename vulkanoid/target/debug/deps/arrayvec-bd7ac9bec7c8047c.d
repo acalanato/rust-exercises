@@ -1,0 +1,11 @@
+/home/vagner/repo/rust-exercises/vulkanoid/target/debug/deps/libarrayvec-bd7ac9bec7c8047c.rmeta: /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/lib.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/maybe_uninit_stable.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/array.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/array_string.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/char.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/range.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/errors.rs
+
+/home/vagner/repo/rust-exercises/vulkanoid/target/debug/deps/arrayvec-bd7ac9bec7c8047c.d: /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/lib.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/maybe_uninit_stable.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/array.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/array_string.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/char.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/range.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/errors.rs
+
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/lib.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/maybe_uninit_stable.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/array.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/array_string.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/char.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/range.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.4.12/src/errors.rs:

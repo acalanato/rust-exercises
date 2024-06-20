@@ -1,0 +1,10 @@
+/home/vagner/repo/rust-exercises/vulkanoid/target/debug/deps/libparking_lot_core-8b612c5b8fe2b890.rmeta: /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/lib.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/thread_parker/unix.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/parking_lot.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/spinwait.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/util.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/word_lock.rs
+
+/home/vagner/repo/rust-exercises/vulkanoid/target/debug/deps/parking_lot_core-8b612c5b8fe2b890.d: /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/lib.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/thread_parker/unix.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/parking_lot.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/spinwait.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/util.rs /home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/word_lock.rs
+
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/lib.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/thread_parker/unix.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/parking_lot.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/spinwait.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/util.rs:
+/home/vagner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/parking_lot_core-0.3.1/src/word_lock.rs:
