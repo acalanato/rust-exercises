@@ -8,7 +8,7 @@ use aggregator::{NewsArticle, Summary, Tweet};
 fn main() {
     let tweet = Tweet {
         username: String::from("horse_shoes"),
-        content:String::from(
+        content:  String::from(
             "i won't do what you tell me"
         ),
         reply: false,
@@ -19,8 +19,8 @@ fn main() {
     let article = NewsArticle {
         headline: String::from("Capivaras voadoras"),
         location: String::from("Brumenau"),
-        author: String::from("John Doe"),
-        content: String::from(
+        author:   String::from("John Doe"),
+        content:  String::from(
             "Capivaras atacaram um evento gospel, seria um sinal do fim dos tempos?"
         ),
     };

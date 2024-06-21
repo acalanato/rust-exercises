@@ -42,5 +42,15 @@ impl Summary for Tweet {
     fn summarize(&self) -> String {
         format!("{}: {}", self.username, self.content)
     }
-*/
+*/    
+}
+
+//Traits as Parameters
+//pub fn notify(item: &impl Summary) {
+//    println!("Breaking news! {}", item.summarize());
+//}
+
+//Trait Bound Syntax
+pub fn notify<T: Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
 }
