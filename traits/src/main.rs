@@ -25,4 +25,5 @@ fn main() {
         ),
     };
     println!("New article available! {}", article.summarize());
+    
 }

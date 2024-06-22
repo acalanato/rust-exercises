@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub trait Summary {
 
     fn summarize_author(&self) -> String;
@@ -53,4 +55,31 @@ impl Summary for Tweet {
 //Trait Bound Syntax
 pub fn notify<T: Summary>(item: &T) {
     println!("Breaking news! {}", item.summarize());
+}
+
+//more itens
+//pub fn notify(item1: &impl Summary, item2: &impl Summary) {}
+//or
+//pub fn notify<T: Summary>(item1: &T, item2: &T) {}
+
+/*
+doesn't work?
+fn my_generic_fn<T, U>(t: &T, u: &U) -> i32
+where
+    T: Display + Clone,
+    U: Clone + Debug,
+{
+    0_i32
+}
+*/
+
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("FieryMullets"),
+        content:  String::from(
+            "Mullets are so hot right now"
+        ),
+        reply: false,
+        retweet: false,
+    }
 }
