@@ -1,10 +1,20 @@
 
 fn main() {
-    let x = square_digits(123456);
+
+    let x = square_digits(321);
+    //    let x = square_digits(123456);
 //    let x = isolate(9119);
     println!("{x}");
 }
 
+fn square_digits(num: u64) -> u64{
+    let isolate = |x, y| (x / y) % 10;
+    let mut out:u64 = isolate(num, 1);
+    
+    0
+}
+
+/*
 fn square_digits(num: u64) -> u64{
     let mut x = 1;
     let mut y = 0;
@@ -18,7 +28,7 @@ fn square_digits(num: u64) -> u64{
     z
 }
 
-/*
+
 fn isolate(num: u64) {
 //    let num: u32 = 1048572;
     let mut i = num;
