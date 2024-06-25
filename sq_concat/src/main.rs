@@ -1,23 +1,21 @@
 
 fn main() {
-    let x = square_digits(91198);
+    let x = square_digits(123456);
 //    let x = isolate(9119);
-    println!("{x:?}");
+    println!("{x}");
 }
 
-fn square_digits(num: u64) -> Vec<u64>{
-    let mut tmp: Vec<u64> = vec![];
-    let mut out = 0;
-    let mut i = 0;
-    let mut safe = 10;
-    while out > 0 {
-        tmp.push((num / 10) % 10);
-        i += 1;
-        safe -= 1;
-        if safe == 0 {break}
+fn square_digits(num: u64) -> u64{
+    let mut x = 1;
+    let mut y = 0;
+    let mut z = 0;
+    let isolate = |x, y| (x / y) % 10;
+    while y < num {
+        y = y + isolate(num, x);
+        x *= 10;
+        z += y * 2;
     }
-    return tmp
-    //    let n = while out > 10 {out /= 10;c += 1;};
+    z
 }
 
 /*
