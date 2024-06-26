@@ -9,9 +9,14 @@ fn main() {
 
 fn square_digits(num: u64) -> u64{
     let isolate = |x, y| (x / y) % 10;
-    let mut out:u64 = isolate(num, 1);
-    
-    0
+    let mut out = num;
+    let mut i = 1;
+    loop {
+        out = out + isolate(num, i).pow(2);
+        i += 1;
+        if i > 10 {break};
+    };
+    out
 }
 
 /*
