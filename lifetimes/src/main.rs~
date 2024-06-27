@@ -1,0 +1,7 @@
+fn main() {
+    let outer;
+    {
+	let inner = 
+    }
+    println!("Hello, world!");
+}
