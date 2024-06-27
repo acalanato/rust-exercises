@@ -1,8 +1,29 @@
-use std::ops::Div;
+
+fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
+    let mut i = 1;
+    while x * i != y * i {
+        i += 1;
+        if i > 100 {break}
+    }
+    (i as u16, 0)
+}
+
+/* no good
+fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
+    let mut _f: u16;
+    let mut a = x;
+    let mut b = y;
+    while y != 0 {
+        _f = a % b;
+        a = b;
+        b = _f;
+    }
+    (x, y)
+}
 
 
 fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
-    let mut mdc: u16 = 3;
+    let mut mdc: u16 = 1;
     let divide = |a, b| a / b;
     while divide(x, mdc) != divide(y, mdc){
         mdc += 1
@@ -10,7 +31,7 @@ fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
     (x.div(mdc), y.div(mdc))
 }
 
-/*
+
 fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
     let xv: Vec<u16> = (1..=50).step_by(x as usize).collect();
     let yv: Vec<u16> = (1..=50).step_by(y as usize).collect();
