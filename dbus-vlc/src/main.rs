@@ -32,5 +32,4 @@ fn connect1(){
 
 fn main() {
     connect2();
-        
 }
