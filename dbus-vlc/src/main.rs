@@ -7,12 +7,18 @@ use std::time::Duration;
 
 
 
-fn connect2() -> Result<(), Box<dyn std::error::Error>> {
+fn connect2() {
 
     let c = Connection::new_session()?;
-    let p = c.with_proxy("org.freedesktop.DBus", "/", Duration::from_millis(5000));
-    let (names,): (Vec<String>,) = p.method_call("org.freedesktop.DBus", "ListNames", ())?;
-    for name in names {println!("{}", name)}
+    c.request_name("com.example.dbustest", false, true, false)?;
+    let mut cr = Crossroads::new();
+    let token = cr.register("com.example.dbustest", |b| {
+        b.method("Hello", ("name",), ("reply",), |_, _, (name,): (String,)| {
+            Ok((format!("Hello {}!", name),))
+        });
+    });
+    cr.insert("/hello", &[token], ());
+    cr.serve(&c)?;
 }
 
 fn connect1(){
