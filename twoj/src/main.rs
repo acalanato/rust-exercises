@@ -1,10 +1,13 @@
+
 fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
-    let mut i = 1;
+    let xv: Vec<u16> = (0..=u16::MAX).step_by(x as usize).collect();
+    let yv: Vec<u16> = (0..=u16::MAX).step_by(y as usize).collect();
+    let mut i: u16 = 0;
     loop {
         i += 1;
-        if x/i == y/i {break}
+        if xv.contains(&i) & yv.contains(&i) {break}
     }
-    (i, i / y)
+    (i / x, i / y)
 }
 /*
 
