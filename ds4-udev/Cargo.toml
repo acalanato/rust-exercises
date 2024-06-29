@@ -1,0 +1,7 @@
+[package]
+name = "ds4-udev"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+udev = "0.8"
