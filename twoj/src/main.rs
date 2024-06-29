@@ -1,3 +1,12 @@
+fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
+    let mut i = 1;
+    loop {
+        i += 1;
+        if x/i == y/i {break}
+    }
+    (i, i / y)
+}
+/*
 
 fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
     let mut i = 1;
@@ -6,19 +15,6 @@ fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
         if i > 100 {break}
     }
     (i as u16, 0)
-}
-
-/* no good
-fn nbr_of_laps (x: u16, y: u16) -> (u16, u16) {
-    let mut _f: u16;
-    let mut a = x;
-    let mut b = y;
-    while y != 0 {
-        _f = a % b;
-        a = b;
-        b = _f;
-    }
-    (x, y)
 }
 
 
