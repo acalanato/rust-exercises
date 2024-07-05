@@ -44,6 +44,12 @@ fn read_js(path: &Path) -> std::io::Result<()> {
     Ok(())
 }
 
+fn read_only(path: &Path) -> std::io::Result<()> {
+    let mut f = File::open(path)?;
+    let mut data = vec![];
+    f.read_to_end(&mut data)?;
+    Ok(())
+}
 
 fn main() {
 
@@ -77,8 +83,8 @@ fn main() {
         println!("{buf_slice:?}");
     }
 */
-    let buffer = read_js(_default)
+    let buffer = read_only(_test)
         .ok()
         .expect("Not there");
-    println!("{:#?}", buffer);
+    println!("{:?}", buffer);
 }
