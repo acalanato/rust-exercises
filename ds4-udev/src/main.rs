@@ -1,6 +1,7 @@
 use std::io::{BufRead, BufReader};
 use std::path::Path;
-use std::fs::{File, OpenOptions};
+use std::io::prelude::Read;
+use std::fs::File;
 use std::fs;
 // follow from https://doc.rust-lang.org/std/io/
 
@@ -35,11 +36,14 @@ fn read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
     buf_slice
 }
 
-//impl Read for JsEvent {
-//    fn read_exact(&mut self, buf: &mut [u8]) -> io::Result<()> {
-//        self.read(buf)?;
-//    }
-//}
+fn read_js(path: &Path) -> std::io::Result<()> {
+    let mut file = File::open(path)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    assert_eq!(contents, "Hello, world!");
+    Ok(())
+}
+
 
 fn main() {
 
@@ -60,20 +64,21 @@ fn main() {
     let mut _js0: Vec<u8> = fs::read(_default)
         .ok()
         .expect("Can't find joystick");
-
-
     
     let mut _js2 = fs::OpenOptions::new()
         .read(true)
         .open("/dev/input/mice")
         .map(BufReader::new)
         .expect("Aint found shit");
-    
+/*    
     loop {
         let buf_slice = read_available(&mut _js2);
 
         println!("{buf_slice:?}");
     }
-    
-//    println!("{:?}", _js0);
+*/
+    let buffer = read_js(_default)
+        .ok()
+        .expect("Not there");
+    println!("{:#?}", buffer);
 }
