@@ -1,3 +1,4 @@
+use udev::*;
 use std::io::BufReader;
 use std::path::Path;
 use std::io::prelude::Read;
@@ -35,6 +36,24 @@ fn _read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
     buf.consume(buf.buffer().len());
 
     buf_slice
+}
+
+fn read_js0() -> std::io::Result<()> {
+    use std::{env, fs, os::linux::fs::MetadataExt};
+    let args: Vec<String> = env::args().collect();
+    let path = args.get(1).expect("No filename given");
+    let metadata = fs::metadata(path).unwrap_or_else(|_| panic!("Can't open file: {}", path));
+    let devtype = match metadata.st_mode() & libc::S_IFMT {
+        libc::S_IFCHR => Some(DeviceType::Character),
+        libc::S_IFBLK => Some(DeviceType::Block),
+        _ => None,
+    }.expect("Not a character or block special file");
+    let ud = udev::Device::from_devnum(devtype, metadata.st_rdev())
+        .expect("Couldn't construct udev from supplied path");
+    println!("syspath of {} is {:?}", path, ud.syspath());
+    let dn = ud.devnum();
+    println!("devnum: {}", dn.unwrap());
+    Ok(())
 }
 
 fn _read_js(path: &Path) -> std::io::Result<()> {
@@ -109,7 +128,11 @@ fn main() {
             println!("{}", line);
         }
     }
-*/
+
     let buff = cat(_udev_).ok().expect("No joystick");
     println!("{}",buff)
+*/
+    read_js0()
+        .ok()
+        .expect("Something something")
 }
