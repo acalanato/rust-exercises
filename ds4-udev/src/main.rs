@@ -57,15 +57,15 @@ fn main() {
     let _udev_ = Path::new("/dev/input/event17"); //existe, mas nem encontra
     let _test = Path::new("/home/vagner/out.txt"); //funfa com qq arquivo
     
-//    let file = fs::OpenOptions::
-/*
+    //let file = fs::OpenOptions::
+
         let mut mice = OpenOptions::new()
         .read(true)
         .open("/dev/input/mice")
         // pra poder ler o conteúdo do File sequencialmente quando tiver disponível.
         .map(BufReader::new)
         .expect("can't open device.");
-*/
+
     
     let mut _js0: Vec<u8> = fs::read(_default)
         .ok()
@@ -87,4 +87,5 @@ fn main() {
         .ok()
         .expect("Not there");
     println!("{:?}", buffer);
+
 }
