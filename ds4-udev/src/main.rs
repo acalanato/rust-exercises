@@ -1,6 +1,7 @@
-use std::io::{BufRead, BufReader};
+use std::io::BufReader;
 use std::path::Path;
 use std::io::prelude::Read;
+use std::io::{self, BufRead};
 use std::fs::File;
 use std::fs;
 // follow from https://doc.rust-lang.org/std/io/
@@ -24,7 +25,7 @@ struct InputEvent {
 }
 
 //função de Mai
-fn read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
+fn _read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
     let buf_slice = buf
         .fill_buf()
          // retorna o conteúdo do buffer e lê mais caso teja disponível.
@@ -36,7 +37,7 @@ fn read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
     buf_slice
 }
 
-fn read_js(path: &Path) -> std::io::Result<()> {
+fn _read_js(path: &Path) -> std::io::Result<()> {
     let mut file = File::open(path)?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
@@ -51,21 +52,27 @@ fn read_only(path: &Path) -> std::io::Result<()> {
     Ok(())
 }
 
-fn main() {
+fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
+where P: AsRef<Path>, {
+    let file = File::open(filename)?;
+    Ok(io::BufReader::new(file).lines())
+}
 
+fn main() {
+    
     let _default = Path::new("/dev/input/js0"); //funfa
     let _udev_ = Path::new("/dev/input/event17"); //existe, mas nem encontra
     let _test = Path::new("/home/vagner/out.txt"); //funfa com qq arquivo
     
     //let file = fs::OpenOptions::
-
+/*
         let mut mice = OpenOptions::new()
         .read(true)
         .open("/dev/input/mice")
         // pra poder ler o conteúdo do File sequencialmente quando tiver disponível.
         .map(BufReader::new)
         .expect("can't open device.");
-
+*/
     
     let mut _js0: Vec<u8> = fs::read(_default)
         .ok()
@@ -82,10 +89,16 @@ fn main() {
 
         println!("{buf_slice:?}");
     }
-*/
+
     let buffer = read_only(_test)
         .ok()
         .expect("Not there");
     println!("{:?}", buffer);
-
+*/    
+    if let Ok(lines) = read_lines(_default) {
+        // Consumes the iterator, returns an (Optional) String
+        for line in lines.flatten() {
+            println!("{}", line);
+        }
+    }
 }
