@@ -52,10 +52,19 @@ fn read_only(path: &Path) -> std::io::Result<()> {
     Ok(())
 }
 
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
+fn _read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where P: AsRef<Path>, {
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
+}
+
+fn cat(path: &Path) -> io::Result<String> {
+    let mut f = File::open(path)?;
+    let mut s = String::new();
+    match f.read_to_string(&mut s) {
+        Ok(_) => Ok(s),
+        Err(e) => Err(e),
+    }
 }
 
 fn main() {
@@ -94,11 +103,13 @@ fn main() {
         .ok()
         .expect("Not there");
     println!("{:?}", buffer);
-*/    
-    if let Ok(lines) = read_lines(_default) {
-        // Consumes the iterator, returns an (Optional) String
+    
+    if let Ok(lines) = _read_lines(_default) {
         for line in lines.flatten() {
             println!("{}", line);
         }
     }
+*/
+    let buff = cat(_udev_).ok().expect("No joystick");
+    println!("{}",buff)
 }
