@@ -1,4 +1,5 @@
 use udev::*;
+use libc;
 use std::io::BufReader;
 use std::path::Path;
 use std::io::prelude::Read;
@@ -38,7 +39,7 @@ fn _read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
     buf_slice
 }
 
-fn read_js0() -> std::io::Result<()> {
+fn read_udev() -> std::io::Result<()> {
     use std::{env, fs, os::linux::fs::MetadataExt};
     let args: Vec<String> = env::args().collect();
     let path = args.get(1).expect("No filename given");
@@ -64,7 +65,7 @@ fn _read_js(path: &Path) -> std::io::Result<()> {
     Ok(())
 }
 
-fn read_only(path: &Path) -> std::io::Result<()> {
+fn _read_only(path: &Path) -> std::io::Result<()> {
     let mut f = File::open(path)?;
     let mut data = vec![];
     f.read_to_end(&mut data)?;
@@ -77,7 +78,7 @@ where P: AsRef<Path>, {
     Ok(io::BufReader::new(file).lines())
 }
 
-fn cat(path: &Path) -> io::Result<String> {
+fn _cat(path: &Path) -> io::Result<String> {
     let mut f = File::open(path)?;
     let mut s = String::new();
     match f.read_to_string(&mut s) {
@@ -132,7 +133,8 @@ fn main() {
     let buff = cat(_udev_).ok().expect("No joystick");
     println!("{}",buff)
 */
-    read_js0()
+    let mut  buff = read_udev()
         .ok()
-        .expect("Something something")
+        .expect("Something something");
+    println!("{:?}", buff)
 }
