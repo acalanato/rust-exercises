@@ -39,7 +39,17 @@ fn _read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
     buf_slice
 }
 
-fn read_udev() -> std::io::Result<()> {
+fn _buffered_read(path: &Path) -> std::io::Result<()> {
+    let file = File::open(path)?;
+    let mut buf_reader = BufReader::new(file);
+    let mut contents = String::new();
+    buf_reader.read_to_string(&mut contents)?;
+    assert_eq!(contents, "Hello, world!");
+    Ok(())
+}
+
+//this fn is supposed to create a device
+fn _create_udev() -> std::io::Result<()> {
     use std::{env, fs, os::linux::fs::MetadataExt};
     let args: Vec<String> = env::args().collect();
     let path = args.get(1).expect("No filename given");
@@ -133,7 +143,7 @@ fn main() {
     let buff = cat(_udev_).ok().expect("No joystick");
     println!("{}",buff)
 */
-    let mut  buff = read_udev()
+    let  buff = _buffered_read(_default)
         .ok()
         .expect("Something something");
     println!("{:?}", buff)
