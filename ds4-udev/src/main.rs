@@ -99,9 +99,6 @@ fn _cat(path: &Path) -> io::Result<String> {
 
 //udev maybe?
 
-fn _udev_read(){
-    let path = udev::Device::devpath(Device);
-}
 
 fn main() {
     
@@ -130,7 +127,7 @@ fn main() {
         .expect("Aint found shit");
 /*    
     loop {
-        let buf_slice = read_available(&mut _js2);
+        let buf_slice = _read_available(&mut _js2);
 
         println!("{buf_slice:?}");
     }
@@ -149,8 +146,6 @@ fn main() {
     let buff = cat(_udev_).ok().expect("No joystick");
     println!("{}",buff)
 */
-    let  buff = _buffered_read(_default)
-        .ok()
-        .expect("Something something");
-    println!("{:?}", buff)
+    
+    println!("{:#?}", _read_only(_default))
 }
