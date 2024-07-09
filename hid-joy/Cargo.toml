@@ -1,0 +1,7 @@
+[package]
+name = "hid-joy"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hidraw = "0.0.7"
