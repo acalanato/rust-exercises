@@ -97,6 +97,12 @@ fn _cat(path: &Path) -> io::Result<String> {
     }
 }
 
+//udev maybe?
+
+fn _udev_read(){
+    let path = udev::Device::devpath(Device);
+}
+
 fn main() {
     
     let _default = Path::new("/dev/input/js0"); //funfa
