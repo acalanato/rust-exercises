@@ -7,8 +7,12 @@ use std::io::{self, BufRead};
 use std::fs::File;
 use std::fs;
 // follow from https://doc.rust-lang.org/std/io/
-
-
+/*
+fn _udev_read(path: &Path) -> Result<()> {
+    let dev = Device::from_syspath(path)?;
+//    Device::properties(&dev);
+}
+ */
 
 #[allow(dead_code)]
 struct JsEvent {
@@ -98,7 +102,26 @@ fn _cat(path: &Path) -> io::Result<String> {
 }
 
 //udev maybe?
+fn _read_udev() -> io::Result<()> {
+    let mut enumerator = udev::Enumerator::new()?;
 
+    for device in enumerator.scan_devices()? {
+        println!();
+        println!("{:#?}", device);
+
+        println!("  [properties]");
+        for property in device.properties() {
+            println!("    - {:?} {:?}", property.name(), property.value());
+        }
+
+        println!("  [attributes]");
+        for attribute in device.attributes() {
+            println!("    - {:?} {:?}", attribute.name(), attribute.value());
+        }
+    }
+
+    Ok(())
+}
 
 fn main() {
     
@@ -146,6 +169,9 @@ fn main() {
     let buff = cat(_udev_).ok().expect("No joystick");
     println!("{}",buff)
 */
+    _read_udev()
+        .ok()
+        .expect("Figure it out loser");
     
-    println!("{:#?}", _read_only(_default))
+    println!("{:#?}", _read_udev())
 }
