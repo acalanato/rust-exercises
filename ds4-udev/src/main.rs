@@ -1,3 +1,4 @@
+extern crate udev;
 use udev::*;
 use libc;
 use std::io::BufReader;
@@ -123,21 +124,18 @@ fn _read_udev() -> io::Result<()> {
     Ok(())
 }
 
+fn _device(path: &Path){
+//    let dev = Device::from_syspath(path);
+    let js0 = udev::Device::from_syspath(path);
+    println!("{:?}", js0)
+}
+
+
 fn main() {
     
     let _default = Path::new("/dev/input/js0"); //funfa
     let _udev_ = Path::new("/dev/input/event17"); //existe, mas nem encontra
     let _test = Path::new("/home/vagner/out.txt"); //funfa com qq arquivo
-    
-    //let file = fs::OpenOptions::
-/*
-        let mut mice = OpenOptions::new()
-        .read(true)
-        .open("/dev/input/mice")
-        // pra poder ler o conteúdo do File sequencialmente quando tiver disponível.
-        .map(BufReader::new)
-        .expect("can't open device.");
-*/
     
     let mut _js0: Vec<u8> = fs::read(_default)
         .ok()
@@ -149,22 +147,11 @@ fn main() {
         .map(BufReader::new)
         .expect("Aint found shit");
 /*    
-    loop {
-        let buf_slice = _read_available(&mut _js2);
-
-        println!("{buf_slice:?}");
-    }
-
     let buffer = read_only(_test)
         .ok()
         .expect("Not there");
     println!("{:?}", buffer);
     
-    if let Ok(lines) = _read_lines(_default) {
-        for line in lines.flatten() {
-            println!("{}", line);
-        }
-    }
 
     let buff = cat(_udev_).ok().expect("No joystick");
     println!("{}",buff)
@@ -173,5 +160,6 @@ fn main() {
         .ok()
         .expect("Figure it out loser");
     
-    println!("{:#?}", _read_udev())
+//    println!("{:#?}", _read_udev())
+    _device(_default)
 }
