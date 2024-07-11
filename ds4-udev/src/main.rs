@@ -92,8 +92,6 @@ fn _cat(path: &Path) -> io::Result<String> {
 //read everything!! must filter
 fn _read_udev() -> io::Result<()> {
     let mut enumerator = udev::Enumerator::new()?;
-
-   
     for device in enumerator.scan_devices()? {
         println!();
         println!("{:#?}", device);
@@ -117,6 +115,17 @@ fn _device(_path: &Path) -> io::Result<()>{
     println!("{:?}", device);
     Ok(())
 }
+
+fn _mon() -> io::Result<()> {
+    let socket = udev::MonitorBuilder::new()?
+        // .match_subsystem_devtype("usb", "usb_device")?
+        .match_subsystem_devtype("usb", "input")?
+        .listen()?;
+    println!("{:#?}", socket.into_raw());
+    Ok(())
+}
+
+
 
 fn main() {
     
@@ -149,6 +158,8 @@ fn main() {
         _read_udev()
         .ok()
         .expect("Figure it out loser");
- */
     _device(_default).ok().expect("Not found")
+     */
+    _mon()
+        .ok();
 }
