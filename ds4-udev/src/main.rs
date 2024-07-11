@@ -7,7 +7,7 @@ use std::io::prelude::Read;
 use std::io::{self, BufRead};
 use std::fs::File;
 use std::fs;
-// follow from https://doc.rust-lang.org/std/io/
+
 /*
 fn _udev_read(path: &Path) -> Result<()> {
     let dev = Device::from_syspath(path)?;
@@ -29,19 +29,6 @@ struct InputEvent {
         t: u8,
         code: u8,
         value: u32,
-}
-
-//função de Mai
-fn _read_available(buf: &mut BufReader<File>) -> Box<[u8]> {
-    let buf_slice = buf
-        .fill_buf()
-         // retorna o conteúdo do buffer e lê mais caso teja disponível.
-        .expect("failed to read available bytes.")
-        .into();
-    // avisa pro leitor quantos bytes foram lidos pra não serem repetidos.
-    buf.consume(buf.buffer().len());
-
-    buf_slice
 }
 
 fn _buffered_read(path: &Path) -> std::io::Result<()> {
@@ -102,7 +89,6 @@ fn _cat(path: &Path) -> io::Result<String> {
     }
 }
 
-//udev maybe?
 fn _read_udev() -> io::Result<()> {
     let mut enumerator = udev::Enumerator::new()?;
 
@@ -136,7 +122,7 @@ fn main() {
     let _default = Path::new("/dev/input/js0"); //funfa
     let _udev_ = Path::new("/dev/input/event17"); //existe, mas nem encontra
     let _test = Path::new("/home/vagner/out.txt"); //funfa com qq arquivo
-    
+/*    
     let mut _js0: Vec<u8> = fs::read(_default)
         .ok()
         .expect("Can't find joystick");
@@ -146,7 +132,7 @@ fn main() {
         .open("/dev/input/mice")
         .map(BufReader::new)
         .expect("Aint found shit");
-/*    
+
     let buffer = read_only(_test)
         .ok()
         .expect("Not there");
@@ -155,11 +141,12 @@ fn main() {
 
     let buff = cat(_udev_).ok().expect("No joystick");
     println!("{}",buff)
-*/
+
+
+    _device(_default)
+
+     */    
     _read_udev()
         .ok()
         .expect("Figure it out loser");
-    
-//    println!("{:#?}", _read_udev())
-    _device(_default)
 }
