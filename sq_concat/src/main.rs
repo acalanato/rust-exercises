@@ -9,13 +9,14 @@ fn main() {
 
 fn square_digits(num: u64) -> u64{
     //    let n = |x: u64| num*x;
-    let mut i = 0;
+    let mut i = 1;
+    let mut out = 0;
     while num > 0 {
-        num = num - (num % 10).pow(2);
-        num - i;
-        i *= 10
+        out = num + (num % 10).pow(2);
+        out -= i;
+        i *= 10;
     }
-    num
+    out
 }
 /*
 
