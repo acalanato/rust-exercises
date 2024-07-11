@@ -8,6 +8,18 @@ fn main() {
 }
 
 fn square_digits(num: u64) -> u64{
+    //    let n = |x: u64| num*x;
+    let mut i = 0;
+    while num > 0 {
+        num = num - (num % 10).pow(2);
+        num - i;
+        i *= 10
+    }
+    num
+}
+/*
+
+fn square_digits(num: u64) -> u64{
     let isolate = |x, y| (x / y) % 10;
     let mut out = num;
     let mut i = 1;
@@ -19,7 +31,7 @@ fn square_digits(num: u64) -> u64{
     out
 }
 
-/*
+
 fn square_digits(num: u64) -> u64{
     let mut x = 1;
     let mut y = 0;
