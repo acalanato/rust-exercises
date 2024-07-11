@@ -89,33 +89,34 @@ fn _cat(path: &Path) -> io::Result<String> {
     }
 }
 
+//read everything!! must filter
 fn _read_udev() -> io::Result<()> {
     let mut enumerator = udev::Enumerator::new()?;
 
+   
     for device in enumerator.scan_devices()? {
         println!();
         println!("{:#?}", device);
 
-        println!("  [properties]");
-        for property in device.properties() {
-            println!("    - {:?} {:?}", property.name(), property.value());
-        }
-
-        println!("  [attributes]");
-        for attribute in device.attributes() {
-            println!("    - {:?} {:?}", attribute.name(), attribute.value());
-        }
+//        println!("  [properties]");
+//        for property in device.properties() {
+//            println!("    - {:?} {:?}", property.name(), property.value());
+//        }
+        
+//        println!("  [attributes]");
+//        for attribute in device.attributes() {
+//            println!("    - {:?} {:?}", attribute.name(), attribute.value());
+//        }
     }
-
     Ok(())
 }
 
-fn _device(path: &Path){
-//    let dev = Device::from_syspath(path);
-    let js0 = udev::Device::from_syspath(path);
-    println!("{:?}", js0)
+fn _device(_path: &Path) -> io::Result<()>{
+    let mut enumerator = udev::Enumerator::new()?;
+    let device = enumerator.match_sysname("js0")?;
+    println!("{:?}", device);
+    Ok(())
 }
-
 
 fn main() {
     
@@ -138,15 +139,16 @@ fn main() {
         .expect("Not there");
     println!("{:?}", buffer);
     
-
-    let buff = cat(_udev_).ok().expect("No joystick");
+    let buff = _cat(_default)
+        .ok().
+        expect("No joystick");
     println!("{}",buff)
 
+    _device(_udev_) //invalid argument?
 
-    _device(_default)
-
-     */    
-    _read_udev()
+        _read_udev()
         .ok()
         .expect("Figure it out loser");
+ */
+    _device(_default).ok().expect("Not found")
 }
