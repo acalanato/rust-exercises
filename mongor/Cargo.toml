@@ -1,0 +1,8 @@
+[package]
+name = "mongor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mongodb = "3.0.1"
+tokio = "1.38"
