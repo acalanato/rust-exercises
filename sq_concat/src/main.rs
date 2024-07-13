@@ -12,7 +12,7 @@ fn square_digits(num: u64) -> u64{
     let mut i = 1;
     let mut out = 0;
     while num > 0 {
-        out = num + (num % 10).pow(2);
+        out = num - (num % 10).pow(2);
         out -= i;
         i *= 10;
     }
