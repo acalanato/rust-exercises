@@ -1,7 +1,7 @@
-use std::env;
+use mongodb::{Client,options::{ClientOptions, ResolverConfig}};
 use std::error::Error;
+use std::env;
 use tokio;
-use mongodb::{self, action::ListDatabases, options, Client};
 
 
 #[tokio::main]
@@ -30,6 +30,6 @@ async fn list<'a>() -> ListDatabases<'a> {
     client_item.list_databases()
 }
 
-fn main() {
-    println!("Hello, world!");
-}
+//fn main() {
+//    println!("Hello, world!");
+//}
