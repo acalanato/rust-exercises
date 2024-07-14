@@ -1,5 +1,6 @@
-use mongodb::{action::ListDatabases, options::{ClientOptions, ConnectionString, ResolverConfig}, Client};
+use mongodb::{options::{ClientOptions, ConnectionString, ListDatabasesOptions, ResolverConfig}, Client};
 use std::error::Error;
+use std::result::Result;
 use std::env;
 use tokio;
 
@@ -21,12 +22,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 */
-async fn list<'a>() -> ListDatabases<'a> {
+async fn connect() -> Result<()>{
     let client_uri = env::var("MONGODB_URI").expect("env var MONGODB_URI not set!");
     let mut client_options = ClientOptions::parse("mongodb://localhost:27017").await?;
-    client_options.app_name = Some("".to_string());
-    let client = Client::with_options(client_options);
-//    client.list_databases(filter, options)
+    //client_options.app_name = Some("Oleos".to_string());
+    let client = Client::with_options(client_options)?;
+    //client.list_databases(filter, options)
+    
+    client.list_databases(None,None)
+    Ok(())
 }
 
 fn main() {
