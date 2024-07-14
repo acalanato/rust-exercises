@@ -1,9 +1,9 @@
-use mongodb::{Client,options::{ClientOptions, ResolverConfig}};
+use mongodb::{action::ListDatabases, options::{ClientOptions, ConnectionString, ResolverConfig}, Client};
 use std::error::Error;
 use std::env;
 use tokio;
 
-
+/*
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
    let client_uri =
@@ -20,16 +20,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
    }
     Ok(())
 }
-
+*/
 async fn list<'a>() -> ListDatabases<'a> {
-    let client = Client::with_uri_str("").await
-        .ok()
-        .expect("No connection to the server");
-
-    let client_item = client.clone();
-    client_item.list_databases()
+    let client_uri = env::var("MONGODB_URI").expect("env var MONGODB_URI not set!");
+    let mut client_options = ClientOptions::parse("mongodb://localhost:27017").await?;
+    client_options.app_name = Some("".to_string());
+    let client = Client::with_options(client_options);
+//    client.list_databases(filter, options)
 }
 
-//fn main() {
-//    println!("Hello, world!");
-//}
+fn main() {
+    println!("Hello, world!");
+}
