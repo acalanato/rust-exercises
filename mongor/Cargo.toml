@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-mongodb = "3.0.1"
+mongodb = "2.1"
 bson = { version = "2", features = ["chrono-0_4"] }
 tokio = "1"
 chrono = "0.4"
