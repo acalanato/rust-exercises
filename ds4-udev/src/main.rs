@@ -1,4 +1,5 @@
 extern crate udev;
+use udev::ffi::{udev_device, udev_enumerate_add_match_subsystem, udev_enumerate_scan_devices, udev_list_entry};
 use udev::*;
 use libc;
 use std::io::BufReader;
@@ -125,6 +126,15 @@ fn _mon() -> io::Result<()> {
     Ok(())
 }
 
+fn _udev_j(path: &Path) -> Result<Device, io::Error>{
+//    let mut enumerator = udev::Enumerator::new()?;
+//    match enumerator.scan_devices() {
+//        enumerator.propert => todo!(),
+//        Err(_) => todo!(),
+//    }
+    Device::from_syspath(path)
+   
+}
 
 
 fn main() {
@@ -159,7 +169,10 @@ fn main() {
         .ok()
         .expect("Figure it out loser");
     _device(_default).ok().expect("Not found")
-     */
+
     _mon()
         .ok();
+     */
+    _read_udev()
+        .expect("Wrong again")
 }
