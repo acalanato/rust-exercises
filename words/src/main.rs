@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 use std::fs::read_to_string;
-use std::ops::Range;
-use rand::{Rng, SeedableRng};
+use rand::Rng;
 
 const FILE: &str = "file.txt";
 
@@ -18,7 +17,6 @@ fn _how_many_words(f: &str) -> usize {
     return map.len() as usize
 }
 
-
 fn get_rand_word() -> String{
     let words_n = _how_many_words(FILE);
     let choice = rand::thread_rng().gen_range(0..words_n);
@@ -30,6 +28,25 @@ fn get_rand_word() -> String{
     word_list[choice].to_string()
 }
 
+/*
+fn word_filter(words :&str) -> Vec<String>{
+    let word_list: Vec<String> = read_to_string(FILE)
+        .unwrap()
+        .lines()
+        .into_iter()
+        .find_map(|x| x.contains("a"))
+}
+ */
+
+fn contains<'a>(s: &'a str, c: &'a str) -> String {
+    if s.contains(c) {
+        s.to_string()
+    } else {
+        "does not contain".to_string()
+    }
+}
+
 fn main() {
-    println!("{}", get_rand_word())
+    //println!("{}", get_rand_word())
+    println!("{}", contains(&get_rand_word(), "a"))
 }
