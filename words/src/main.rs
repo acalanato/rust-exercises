@@ -18,13 +18,13 @@ fn _how_many_words(f: &str) -> usize {
 }
 
 fn get_rand_word() -> String{
-    let words_n = _how_many_words(FILE);
-    let choice = rand::thread_rng().gen_range(0..words_n);
     let word_list: Vec<String> = read_to_string(FILE)
         .unwrap()
         .lines()
         .map(String::from)
         .collect();
+    let words_n = word_list.len();
+    let choice = rand::thread_rng().gen_range(0..words_n);
     word_list[choice].to_string()
 }
 
@@ -42,7 +42,8 @@ fn contains<'a>(s: &'a str, c: &'a str) -> String {
     if s.contains(c) {
         s.to_string()
     } else {
-        "does not contain".to_string()
+        //"does not contain".to_string()
+        format!("\"{}\" does not contain \"{}\"", s, c)
     }
 }
 
