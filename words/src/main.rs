@@ -17,7 +17,7 @@ fn _how_many_words(f: &str) -> usize {
     return map.len() as usize
 }
 
-fn get_rand_word() -> String{
+fn _get_rand_word() -> String{
     let word_list: Vec<String> = read_to_string(FILE)
         .unwrap()
         .lines()
@@ -28,17 +28,19 @@ fn get_rand_word() -> String{
     word_list[choice].to_string()
 }
 
-/*
-fn word_filter(words :&str) -> Vec<String>{
-    let word_list: Vec<String> = read_to_string(FILE)
-        .unwrap()
-        .lines()
-        .into_iter()
-        .find_map(|x| x.contains("a"))
-}
- */
 
-fn contains<'a>(s: &'a str, c: &'a str) -> String {
+fn word_filter(list: Vec<String>) -> Vec<String>{
+    let mut result = Vec::new();
+    for word in list {
+        if word.contains("a"){
+            result.push(word)
+        }
+    }
+    result
+}
+
+
+fn _contains<'a>(s: &'a str, c: &'a str) -> String {
     if s.contains(c) {
         s.to_string()
     } else {
@@ -47,7 +49,16 @@ fn contains<'a>(s: &'a str, c: &'a str) -> String {
     }
 }
 
+fn _list_words() -> Vec<String>{
+        read_to_string(FILE)
+        .unwrap()
+        .lines()
+        .map(String::from)
+        .collect()
+}
+
 fn main() {
-    //println!("{}", get_rand_word())
-    println!("{}", contains(&get_rand_word(), "a"))
+    let _list_words = _list_words();
+    //println!("{}", contains(&get_rand_word(), "a"))
+    println!("before:\t {}\nafter:\t {}", _list_words.len(), word_filter(_list_words).len())
 }
