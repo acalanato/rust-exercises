@@ -27,10 +27,11 @@ fn main() {
     assert_eq!(nbr_of_laps(5, 3), (3, 5));
     assert_eq!(nbr_of_laps(4, 6), (3, 2));
     assert_eq!(nbr_of_laps(5, 5), (1, 1));
-     */
     let  m: Vec<u16> = (0..=10).collect();
     let o = 3;
     let n: Vec<_> = m.iter().map(|x| x * o).collect();
+     */
+    let n = |m: u16| (0..=10).map(move |n| m * n).collect::<Box<[_]>>();
     
-    println!("Sucess!{:?}", n);
+    println!("Sucess!{:?}", n(3)[5]);
 }
