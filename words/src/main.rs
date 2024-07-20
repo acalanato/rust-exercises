@@ -57,6 +57,18 @@ fn _list_words() -> Vec<String>{
         .collect()
 }
 
+fn _crosswords_field<'a>(x: u8, y: u8, c: char) -> ([&'a str; 10], [&'a str;10]){
+    let  field = (["", "", "","","","","","","",""],
+		 ["", "", "","","","","","","",""]);
+    for x in field.0 {
+	for y in field.1 {
+	    y = "0";
+	}
+	x = "0";
+    }
+    field
+}
+
 fn main() {
     let _list_words = _list_words();
     //println!("{}", contains(&get_rand_word(), "a"))
