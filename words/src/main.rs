@@ -58,13 +58,12 @@ fn _list_words() -> Vec<String>{
 }
 
 fn _crosswords_field<'a>(x: u8, y: u8, c: char) -> ([&'a str; 10], [&'a str;10]){
-    let  field = (["", "", "","","","","","","",""],
-		 ["", "", "","","","","","","",""]);
-    for x in field.0 {
-	for y in field.1 {
-	    y = "0";
+    let  field = ([], []);
+    for a in 0..=10 {
+	for b in 0..=10 {
+	    field.1[b] = "0";
 	}
-	x = "0";
+	field.0[a] = "0";
     }
     field
 }
