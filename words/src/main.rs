@@ -29,7 +29,7 @@ fn _get_rand_word() -> String{
 }
 
 
-fn word_filter(list: Vec<String>) -> Vec<String>{
+fn _word_filter(list: Vec<String>) -> Vec<String>{
     let mut result = Vec::new();
     for word in list {
         if word.contains("a"){
@@ -57,19 +57,21 @@ fn _list_words() -> Vec<String>{
         .collect()
 }
 
-fn _crosswords_field<'a>(x: u8, y: u8, c: char) -> ([&'a str; 10], [&'a str;10]){
-    let  field = ([], []);
+fn _crosswords_field<'a>(x: u8, y: u8, c: &'a str) -> [[&'a str;10]; 10] {
+    let mut field = [[c;10];10];
     for a in 0..=10 {
 	for b in 0..=10 {
-	    field.1[b] = "0";
+	    field[a][b] = "0";
 	}
-	field.0[a] = "0";
+	field[a][a] = "0";
     }
     field
 }
 
+
+
 fn main() {
-    let _list_words = _list_words();
+    let mut _list_words = [["a";10];10]; //_list_words();
     //println!("{}", contains(&get_rand_word(), "a"))
-    println!("before:\t {}\nafter:\t {}", _list_words.len(), word_filter(_list_words).len())
+    println!("before:\t {}", _list_words[1][0])
 }
