@@ -57,8 +57,8 @@ fn _list_words() -> Vec<String>{
         .collect()
 }
 
-fn _crosswords_field<'a>(x: u8, y: u8, c: &'a str) -> [[&'a str;10]; 10] {
-    let mut field = [[c;10];10];
+fn _crosswords_field<'a>(row: usize, col: usize, c: &'a str) -> [[&'a str;10]; 10] {
+    let mut field = [[c;row];col];
     for a in 0..=10 {
 	for b in 0..=10 {
 	    field[a][b] = "0";
@@ -71,7 +71,7 @@ fn _crosswords_field<'a>(x: u8, y: u8, c: &'a str) -> [[&'a str;10]; 10] {
 
 
 fn main() {
-    let mut _list_words = [["a";10];10]; //_list_words();
+    let mut _list_words = _crosswords_field(10, 10, "b"); //_list_words();
     //println!("{}", contains(&get_rand_word(), "a"))
     println!("before:\t {}", _list_words[1][0])
 }
