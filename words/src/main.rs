@@ -68,8 +68,10 @@ fn _crosswords_field<'a>() -> [[&'a str;10]; 10] {
     field
 }
 
-fn _add_word<'a>(word: String, cord: (i32, i32)) -> [[&'a str;10]; 10] {
-    let (row, cord) = cord;
+fn _add_word<'a>(word: String, cord: (usize, usize)) -> [[&'a str;10]; 10] {
+    let (row, col) = cord;
+    let field = _crosswords_field();
+    
     _crosswords_field()
         //continue here
 }
