@@ -1,11 +1,22 @@
 
 fn main() {
 
-    let x = square_digits(321);
-    //    let x = square_digits(123456);
-//    let x = isolate(9119);
-    println!("{x}");
+    //let x = square_digits(321);
+    //let x = square_digits(123456);
+    //let x = isolate(9119);
+    //println!("{x}");
+    square_digits(321)
 }
+
+
+fn square_digits(num: u64) {
+    let x = num.to_string().bytes().map(|x| x * 2).collect::<Vec<u8>>();
+    println!("{:?}", x)
+        
+}
+
+/*
+
 
 fn square_digits(num: u64) -> u64{
     //    let n = |x: u64| num*x;
@@ -18,7 +29,6 @@ fn square_digits(num: u64) -> u64{
     }
     out
 }
-/*
 
 fn square_digits(num: u64) -> u64{
     let isolate = |x, y| (x / y) % 10;
