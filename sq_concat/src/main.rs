@@ -10,8 +10,13 @@ fn main() {
 
 
 fn square_digits(num: u64) {
-    let x = num.to_string().bytes().map(|x| x * 2).collect::<Vec<u8>>();
-    println!("{:?}", x)
+    let x = num.to_string()
+        .chars()
+        .map(|x| (x as u8) * 2)
+        .collect::<Vec<u8>>();
+    let buff = std::str::from_utf8(&x)
+        .ok();
+    println!("{:?}", buff)
         
 }
 
