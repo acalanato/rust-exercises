@@ -10,13 +10,14 @@ fn main() {
 
 
 fn square_digits(num: u64) {
-    let x = num.to_string()
+    let x = num as u32;
+    let y: Vec<_> = num.to_string()
         .chars()
-        .map(|x| (x as u8) * 2)
-        .collect::<Vec<u8>>();
-    let buff = std::str::from_utf8(&x)
-        .ok();
-    println!("{:?}", buff)
+        .map(|d| d.to_digit(x)
+        .unwrap())
+        .collect();
+    
+    println!("{:?}", y)
         
 }
 
