@@ -4,11 +4,23 @@ fn main() {
     //let x = square_digits(321);
     //let x = square_digits(123456);
     //let x = isolate(9119);
-    //println!("{x}");
-    square_digits(321)
+    let x = square_digits(321);
+    println!("{x}")
 }
 
 
+fn square_digits(mut num: u64) -> u64{
+    let n = |x, y| x % y;
+    let mut l = num.to_string().len() as u64;
+    while l >= 1 {
+        num = n(num, l) / l;
+        println!("{l}");
+        l -= 1;
+    }
+    num
+}
+
+/*
 fn square_digits(num: u64) {
     let x = num as u32;
     let y: Vec<_> = num.to_string()
@@ -17,11 +29,10 @@ fn square_digits(num: u64) {
         .unwrap())
         .collect();
     
-    println!("{:?}", y)
+    println!("{x:?} {y:?}")
         
 }
 
-/*
 
 
 fn square_digits(num: u64) -> u64{
