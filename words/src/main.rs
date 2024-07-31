@@ -70,18 +70,16 @@ fn _crosswords_field<'a>() -> [[&'a str;10]; 10] {
     field
 }
 
-fn _add_word<'a>(word: String, cord: (usize, usize)) -> [[&'a str;10]; 10] {
+fn _add_word<'a>(word: String, cord: (usize, usize)) {
     let (row, col) = cord;
     let field = _crosswords_field();
-    word.chars().collect::<Vec<char>>();
-    //for x in row..10 {
-    //    field[row][col] = word[x];
-    //}
-
-    
-    
-    field
+    word.chars().collect::<Vec<char>>().iter();
+    for x in word {
+        field[row][col] = word[x]
+    }
 }
+
+
 
 fn main() {
     let mut _list_words = _crosswords_field(); //_list_words();
