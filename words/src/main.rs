@@ -4,6 +4,10 @@ use rand::Rng;
 
 const FILE: &str = "file.txt";
 
+pub struct CrossFeld{
+    pub field: [[u8;10]; 10],
+}
+
 fn _how_many_words(f: &str) -> usize {
     let file = read_to_string(f)
         .ok()
@@ -28,7 +32,6 @@ fn _get_rand_word() -> String{
     word_list[choice].to_string()
 }
 
-
 fn _word_filter(list: Vec<String>) -> Vec<String>{
     let mut result = Vec::new();
     for word in list {
@@ -38,7 +41,6 @@ fn _word_filter(list: Vec<String>) -> Vec<String>{
     }
     result
 }
-
 
 fn _contains<'a>(s: &'a str, c: &'a str) -> String {
     if s.contains(c) {
@@ -72,14 +74,23 @@ fn _add_word<'a>(word: String, cord: (usize, usize)) -> [[&'a str;10]; 10] {
     let (row, col) = cord;
     let field = _crosswords_field();
     word.chars().collect::<Vec<char>>();
-    for x in row..10 {
-        field[row][col] = word[x];
-    }
+    //for x in row..10 {
+    //    field[row][col] = word[x];
+    //}
+
+    
+    
     field
 }
 
 fn main() {
     let mut _list_words = _crosswords_field(); //_list_words();
     //println!("{}", contains(&get_rand_word(), "a"))
-    println!("before:\t {}", _list_words[1][3])
+    //println!("before:\t {}", _list_words[1][3])
+    let field = _crosswords_field();
+    let mut i = 0;
+    for x in field {
+        println!("{}",x[i]);
+        i += 1
+    }
 }
