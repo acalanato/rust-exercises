@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::fs::read_to_string;
+use std::path::Path;
 use rand::Rng;
 
 const FILE: &str = "file.txt";
@@ -61,25 +62,37 @@ fn _list_words() -> Vec<String>{
 
 fn _crosswords_field<'a>() -> [[&'a str;10]; 10] {
     let mut field = [["";10];10];
-    for a in 0..10 {
-	for b in 0..10 {
+    for a in 0..=10 {
+	for b in 0..=10 {
 	    field[a][b] = "0";
 	}
 	field[a][a] = "0";
     }
     field
 }
-
+/*
 fn _add_word<'a>(word: String, cord: (usize, usize)) {
     let (row, col) = cord;
     let field = _crosswords_field();
-    word.chars().collect::<Vec<char>>().iter();
-    for x in word {
+    let w = word.chars().collect::<Vec<char>>();
+    for x in w.iter() {
         field[row][col] = word[x]
     }
 }
+*/
 
-
+fn _add_word() {
+    let (row, col) = (<Vec<u8>>::new(), <Vec<u8>>::new());
+    let word = _get_rand_word().chars().map(|x| x as u8).collect::<Vec<u8>>();
+    'out: loop{
+        for letter in word {
+            for y in row.iter(){
+                todo!()
+            }
+        }
+        break 'out
+    }
+}
 
 fn main() {
     let mut _list_words = _crosswords_field(); //_list_words();
