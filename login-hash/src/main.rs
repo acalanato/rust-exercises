@@ -1,9 +1,23 @@
 use std::io;
+use std::hash::{DefaultHasher, Hash, Hasher};
+#[allow(unused_variables)]
+
+#[derive(Hash)]
+struct User {
+    user: String,
+    passwd: String,
+}
+
+fn hash_p<T: Hash>(t: &T) -> u64{
+    let mut p = DefaultHasher::new();
+    t.hash(&mut p);
+    p.finish()
+}
 
 fn main() {
     let mut user = String::new();
     let mut passwd = String::new();
-
+    
     'login: loop {
         'user: loop {
             println!("User;");
