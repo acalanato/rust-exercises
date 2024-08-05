@@ -2,9 +2,9 @@
 fn main() {
 
     //let x = square_digits(321);
-    //let x = square_digits(123456);
+    let x = square_digits(12321);
     //let x = isolate(9119);
-    let x = square_digits(321);
+    //let x = square_digits(321);
     println!("{x}")
 }
 
@@ -12,9 +12,11 @@ fn main() {
 fn square_digits(mut num: u64) -> u64{
     let n = |x, y| x % y;
     let mut l = num.to_string().len() as u64;
+    let mut out: u64 = 0;
     while l >= 1 {
         num = n(num, l) / l;
-        println!("{l}");
+        out = out + num * num;
+        println!("l:\t{l}\nout:\t{out}");
         l -= 1;
     }
     num
