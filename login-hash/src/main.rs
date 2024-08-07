@@ -7,9 +7,10 @@ use std::hash::{DefaultHasher, Hash, Hasher};
 struct User {
     user: String,
     passwd: String,
+    level: u8,
 }
 
-/*
+
 fn create_user(us: String, pas: String) -> Result<()>{
     let mut file = File::create("shadow")?;
     let user = User {
@@ -23,7 +24,7 @@ fn create_user(us: String, pas: String) -> Result<()>{
     file.write(hash)?;
     Ok(())
 }
- */
+
 
 fn hash_p<T: Hash>(t: &T) -> u64{
     let mut p = DefaultHasher::new();
