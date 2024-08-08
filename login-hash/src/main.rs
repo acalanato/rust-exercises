@@ -11,7 +11,7 @@ struct User {
 }
 
 
-fn _create_user(us: String, pas: String) -> Result<()>{
+fn create_user(us: String, pas: String) -> Result<()>{
     let mut file = File::create("shadow")?;
     let user = User {
         user: us,
@@ -34,7 +34,7 @@ fn hash_p<T: Hash>(t: &T) -> u64{
 }
  */
 
-fn _login() {
+fn login() {
     let mut user = String::new();
     let mut passwd = String::new();
     
@@ -73,25 +73,36 @@ What to do?
 2 -> Create Account
 3 -> Exit");
     let mut opt = String::new();
-    'option: loop {
+    'menu: loop {
+	
 	io::stdin()
-            .read_line(&mut opt)
-            .expect("Invalid option");
-	match opt.trim().parse::<String>(){
+	    .read_line(&mut opt)
+	    .expect("Invalid option");
+	let choice: i32 = match opt.trim().parse(){
 	    Ok(opt) => opt,
 	    Err(_) => continue,
 	};
-	break 'option
-    }
-    loop {
-	match opt.as_str() {
-	    "1" => println!("opt1"),
-	    "2" => println!("opt2"),
-	    "3" => println!("opt3"),
-	    _ => break,
-	
+	match choice {
+	    1 => {login();
+		  break},
+	    
+	    2 => {let mut user = String::new();
+		  let mut passwd = String::new();
+		io::stdin()
+		  .read_line(&mut user)
+		  .expect("Invalid user");
+		  io::stdin()
+		  .read_line(&mut passwd)
+		  .expect("Invalid password");
+		  create_user(user, passwd)
+		  .ok().expect("Failed to create user");
+		  break},
+
+	    3 => {println!("opt3");
+		  break 'menu},
+
+	    _ => continue,
+	    }
 	};
-    }
-    //create_user(us, pas);
-    //login()
+
 }
