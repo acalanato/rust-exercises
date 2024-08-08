@@ -11,7 +11,7 @@ struct User {
 }
 
 
-fn create_user(us: String, pas: String) -> Result<()>{
+fn _create_user(us: String, pas: String) -> Result<()>{
     let mut file = File::create("shadow")?;
     let user = User {
         user: us,
@@ -26,17 +26,15 @@ fn create_user(us: String, pas: String) -> Result<()>{
     Ok(())
 }
 
-
+ /*
 fn hash_p<T: Hash>(t: &T) -> u64{
     let mut p = DefaultHasher::new();
     t.hash(&mut p);
     p.finish()
 }
+ */
 
-fn main() {
-    create_user("user".to_string(), "pask".to_string())
-        .ok();
-    
+fn _login() {
     let mut user = String::new();
     let mut passwd = String::new();
     
@@ -66,4 +64,34 @@ fn main() {
     }
     println!("\nLogin =\t\t{}Password =\t{}", user, passwd);
     println!("Sucess!")
+}
+
+fn main() {
+    println!("
+What to do?
+1 -> Login
+2 -> Create Account
+3 -> Exit");
+    let mut opt = String::new();
+    'option: loop {
+	io::stdin()
+            .read_line(&mut opt)
+            .expect("Invalid option");
+	match opt.trim().parse::<String>(){
+	    Ok(opt) => opt,
+	    Err(_) => continue,
+	};
+	break 'option
+    }
+    loop {
+	match opt.as_str() {
+	    "1" => println!("opt1"),
+	    "2" => println!("opt2"),
+	    "3" => println!("opt3"),
+	    _ => break,
+	
+	};
+    }
+    //create_user(us, pas);
+    //login()
 }
