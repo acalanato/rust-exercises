@@ -16,12 +16,13 @@ fn create_user(us: String, pas: String) -> Result<()>{
     let user = User {
         user: us,
         passwd: pas,
+	level: 1,
     };
     let mut u = DefaultHasher::new();
     user.hash(&mut u);
     let hash = u.finish();
     //file.write_all(b"{hash}")?;
-    file.write(hash)?;
+    file.write(hash.to_string().as_bytes())?;
     Ok(())
 }
 
@@ -33,6 +34,9 @@ fn hash_p<T: Hash>(t: &T) -> u64{
 }
 
 fn main() {
+    create_user("user".to_string(), "pask".to_string())
+        .ok();
+    
     let mut user = String::new();
     let mut passwd = String::new();
     
