@@ -10,38 +10,29 @@ struct User {
     level: u8,
 }
 
-
 fn create_user(us: String, pas: String) -> Result<()>{
     let mut file = File::create("shadow")?;
     let user = User {
         user: us,
         passwd: pas,
-	level: 1,
+	level: 1, // not used for now
     };
     let mut u = DefaultHasher::new();
     user.hash(&mut u);
     let hash = u.finish();
-    //file.write_all(b"{hash}")?;
     file.write(hash.to_string().as_bytes())?;
     Ok(())
 }
 
- /*
-fn hash_p<T: Hash>(t: &T) -> u64{
-    let mut p = DefaultHasher::new();
-    t.hash(&mut p);
-    p.finish()
-}
- */
-
 fn login() {
     let mut user = String::new();
     let mut passwd = String::new();
-    let hash = read_to_string("shadow".to_string());
+    let hash = read_to_string("shadow".to_string()).ok().expect("");
+    let mut u = DefaultHasher::new();
+
     'login: loop {
         'user: loop {
             println!("User:");
-            //let mut user = String::new();
             io::stdin()
                 .read_line(&mut user)
                 .expect("Invalid user");
@@ -60,11 +51,23 @@ fn login() {
                 Err(_) => continue,
             };
         }
-        break 'login;
+	let user = User {
+            user: user.clone(),
+            passwd: passwd.clone(),
+	    level: 1, // not used for now
+	};
+	user.hash(&mut u);
+	let user = u.finish().to_string();
+	if user == hash {
+	    println!("Sucess!");
+            break 'login;
+	} else {
+	    println!("User or password is invalid")
+	}
     }
-    
-    println!("\nLogin =\t\t{}Password =\t{}", user, passwd);
-    println!("Sucess!")
+
+//    println!("\nLogin =\t\t{}Password =\t{}", user, passwd);
+//    println!("Sucess!")
 }
 
 fn main() {
@@ -107,7 +110,8 @@ What to do?
 		  };
 		  create_user(user, passwd)
 		  .ok().expect("Failed to create user");
-		  break},
+		  println!("User created!");
+		  break 'menu},
 
 	    3 => {println!("Ciao babe");
 		  break 'menu},
