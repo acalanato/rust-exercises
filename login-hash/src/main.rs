@@ -1,5 +1,5 @@
-use std::io::{self, Read, Result, Write};
-use std::fs::File;
+use std::io::{self, Result, Write};
+use std::fs::{File, read_to_string};
 use std::hash::{DefaultHasher, Hash, Hasher};
 #[allow(unused_variables)]
 
@@ -37,7 +37,7 @@ fn hash_p<T: Hash>(t: &T) -> u64{
 fn login() {
     let mut user = String::new();
     let mut passwd = String::new();
-    
+    let hash = read_to_string("shadow".to_string());
     'login: loop {
         'user: loop {
             println!("User:");
@@ -62,6 +62,7 @@ fn login() {
         }
         break 'login;
     }
+    
     println!("\nLogin =\t\t{}Password =\t{}", user, passwd);
     println!("Sucess!")
 }
@@ -88,17 +89,27 @@ What to do?
 	    
 	    2 => {let mut user = String::new();
 		  let mut passwd = String::new();
-		io::stdin()
+		  println!("Create new user");
+		  io::stdin()
 		  .read_line(&mut user)
 		  .expect("Invalid user");
+		  match user.trim().parse::<String>() {
+		      Ok(user) => user,
+		      Err(_) => continue,
+		  };
+		  println!("Password for the new account");
 		  io::stdin()
 		  .read_line(&mut passwd)
 		  .expect("Invalid password");
+		  match user.trim().parse::<String>() {
+		      Ok(passwd) => passwd,
+		      Err(_) => continue,
+		  };
 		  create_user(user, passwd)
 		  .ok().expect("Failed to create user");
 		  break},
 
-	    3 => {println!("opt3");
+	    3 => {println!("Ciao babe");
 		  break 'menu},
 
 	    _ => continue,
