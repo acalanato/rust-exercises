@@ -10,11 +10,11 @@ struct User {
     level: u8,
 }
 
-fn create_user(us: String, pas: String) -> Result<()>{
+fn create_user(user: String, passwd: String) -> Result<()>{
     let mut file = File::create("shadow")?;
     let user = User {
-        user: us,
-        passwd: pas,
+        user,
+        passwd,
 	level: 1, // not used for now
     };
     let mut u = DefaultHasher::new();
@@ -27,7 +27,6 @@ fn create_user(us: String, pas: String) -> Result<()>{
 fn login() {
     let mut user = String::new();
     let mut passwd = String::new();
-    let hash = read_to_string("shadow".to_string()).ok().expect("");
     let mut u = DefaultHasher::new();
 
     'login: loop {
@@ -51,6 +50,9 @@ fn login() {
                 Err(_) => continue,
             };
         }
+
+	let hash = read_to_string("shadow".to_string()).ok().expect("");
+
 	let user = User {
             user: user.clone(),
             passwd: passwd.clone(),
@@ -62,12 +64,12 @@ fn login() {
 	    println!("Sucess!");
             break 'login;
 	} else {
-	    println!("User or password is invalid")
+	    println!("
+   User or password is invalid
+Try again or press Ctrl+C to exit
+")
 	}
     }
-
-//    println!("\nLogin =\t\t{}Password =\t{}", user, passwd);
-//    println!("Sucess!")
 }
 
 fn main() {
@@ -117,7 +119,6 @@ What to do?
 		  break 'menu},
 
 	    _ => continue,
-	    }
-	};
-
+	}
+    };
 }
