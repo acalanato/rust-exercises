@@ -72,6 +72,30 @@ Try again or press Ctrl+C to exit
     }
 }
 
+fn message() {
+    println!("
+You're in, now what?
+1 -> Show secret message
+2 -> Exit;
+");
+    let mut opt = String::new();
+    'option: loop {
+	io::stdin()
+            .read_line(&mut opt)
+            .expect("Invalid user");
+	let opt: i32 = match opt.trim().parse(){
+	    Ok(opt) => opt,
+	    Err(_) => continue,
+	};
+
+	match opt {
+	    1 => {println!("Your friend is having an affair"); break 'option},
+	    _ => break 'option,
+	}
+    };
+    
+}
+
 fn main() {
     println!("
 What to do?
@@ -90,6 +114,7 @@ What to do?
 	};
 	match choice {
 	    1 => {login();
+		  message();
 		  break},
 	    
 	    2 => {let mut user = String::new();
