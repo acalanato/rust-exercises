@@ -19,8 +19,13 @@ fn create_user(user: String, passwd: String) -> Result<()>{
     };
     let mut u = DefaultHasher::new();
     user.hash(&mut u);
+
     let hash = u.finish();
-    file.write(hash.to_string().as_bytes())?;
+    let exist = read_to_string("shadow".to_string())?;
+
+    if hash.to_string() != exist {
+	file.write(hash.to_string().as_bytes())?;
+    }
     Ok(())
 }
 
