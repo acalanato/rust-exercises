@@ -2,6 +2,7 @@ extern crate udev;
 use udev::ffi::{udev_device, udev_enumerate_add_match_subsystem, udev_enumerate_scan_devices, udev_list_entry};
 use udev::*;
 use libc;
+use std::ffi::OsString;
 use std::io::BufReader;
 use std::path::Path;
 use std::io::prelude::Read;
@@ -153,11 +154,7 @@ fn main() {
         .map(BufReader::new)
         .expect("Aint found shit");
 
-    let buffer = read_only(_test)
-        .ok()
-        .expect("Not there");
-    println!("{:?}", buffer);
-    
+
     let buff = _cat(_default)
         .ok().
         expect("No joystick");
@@ -165,14 +162,20 @@ fn main() {
 
     _device(_udev_) //invalid argument?
 
+    _mon()
+        .ok();
+
+    _read_udev()
+        .expect("Wrong again")
+
         _read_udev()
         .ok()
         .expect("Figure it out loser");
     _device(_default).ok().expect("Not found")
-
-    _mon()
-        .ok();
      */
-    _read_udev()
-        .expect("Wrong again")
+    let buffer = _read_only(_default)
+        .ok()
+        .expect("Not there");
+    println!("{:?}", buffer);
+
 }
