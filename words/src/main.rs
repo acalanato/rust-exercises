@@ -70,24 +70,14 @@ fn _crosswords_field<'a>() -> [[&'a str;10]; 10] {
     }
     field
 }
-/*
-fn _add_word<'a>(word: String, cord: (usize, usize)) {
-    let (row, col) = cord;
-    let field = _crosswords_field();
-    let w = word.chars().collect::<Vec<char>>();
-    for x in w.iter() {
-        field[row][col] = word[x]
-    }
-}
-*/
 
 fn _add_word() {
     let (row, col) = (<Vec<u8>>::new(), <Vec<u8>>::new());
     let word = _get_rand_word().chars().map(|x| x as u8).collect::<Vec<u8>>();
     'out: loop{
-        for letter in row.iter() {
-            for y in col.iter(){
-                letter[y] = word[y]
+        for x in row {
+            for y in col{
+                row[x][y] = word[y]
             }
         }
         break 'out
