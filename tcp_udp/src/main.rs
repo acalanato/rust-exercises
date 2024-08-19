@@ -1,22 +1,16 @@
 #[allow(unused)]
-use std::{io::Read, net::{TcpListener, TcpStream}};
-#[allow(unused)]
-use std::result::Result;
+use std::{io::{Read, Result}, net::{TcpListener, TcpStream}, env};
 
-/*
+
 fn send(mut stream: TcpStream) -> Result<()>{
     stream = TcpStream::connect("10.0.1.1:80")?;
     let mut listen = String::new();
     stream.read_to_string(&mut listen)?;
     Ok(())
 }
-*/
+
 
 fn listen(stream: TcpListener)  {
-    struct Stream {addr: String, fd: i32,}
-    //let Stream { addr: addr0 , fd: fd0 } = stream;
-    //Listening on address TcpListener { addr: 127.0.0.1:80, fd: 3 }
-
     println!("Listening on address {stream:?}");
     match stream.accept() {
 	Ok((_socket, addr)) => println!("funfou: {addr:?}"),
@@ -24,8 +18,24 @@ fn listen(stream: TcpListener)  {
     }
 }
 
+fn peer() -> Result<()>{
+    todo!();
+    Ok(());
+}
+
+
 fn main() {
-    let stream = TcpListener::bind("127.0.0.1:80").unwrap();
-    listen(stream);
+    let args: Vec<String> = env::args().collect();
+    let localhost = "127.0.0.1:80";
+    let remote = peer();
+    match args {
+	send => {
+	    send(remote);
+	}
+	receive => {
+	    let stream = TcpListener::bind(localhost).unwrap();
+	    listen(stream);
+	}
+    }
     println!("Sucess!");
 }
