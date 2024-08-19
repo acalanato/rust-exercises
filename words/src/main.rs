@@ -62,8 +62,8 @@ fn _list_words() -> Vec<String>{
 
 fn _crosswords_field<'a>() -> [[&'a str;10]; 10] {
     let mut field = [["";10];10];
-    for a in 0..=10 {
-	for b in 0..=10 {
+    for a in 0..10 {
+	for b in 0..10 {
 	    field[a][b] = "0";
 	}
 	field[a][a] = "0";
@@ -85,9 +85,9 @@ fn _add_word() {
     let (row, col) = (<Vec<u8>>::new(), <Vec<u8>>::new());
     let word = _get_rand_word().chars().map(|x| x as u8).collect::<Vec<u8>>();
     'out: loop{
-        for letter in word {
-            for y in row.iter(){
-                todo!()
+        for letter in row.iter() {
+            for y in col.iter(){
+                letter[y] = word[y]
             }
         }
         break 'out
@@ -95,6 +95,7 @@ fn _add_word() {
 }
 
 fn main() {
+    _add_word();
     let mut _list_words = _crosswords_field(); //_list_words();
     //println!("{}", contains(&get_rand_word(), "a"))
     //println!("before:\t {}", _list_words[1][3])
