@@ -1,6 +1,8 @@
 #[allow(unused)]
-use std::{io::{Read, Result}, net::{TcpListener, TcpStream}, env};
+use std::{io::{Read, Result}, net::{TcpListener, TcpStream, UdpSocket}, env};
 
+const LOCALHOST: &str = "127.0.1.1";
+const PORT: &str = "789";
 
 fn send(mut stream: TcpStream) -> Result<()>{
     stream = TcpStream::connect("10.0.1.1:80")?;
@@ -19,15 +21,19 @@ fn listen(stream: TcpListener)  {
 }
 
 fn peer() -> Result<()>{
-    todo!();
-    Ok(());
+    let localhost = format!("{LOCALHOST}:{PORT}");
+    let socket = UdpSocket::bind(localhost)?;
+    socket.peer_addr()?;
+    Ok(())
 }
+
 
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let localhost = "127.0.0.1:80";
+    let localhost = format!("{LOCALHOST}:{PORT}");
     let remote = peer();
+/*
     match args {
 	send => {
 	    send(remote);
@@ -37,5 +43,7 @@ fn main() {
 	    listen(stream);
 	}
     }
-    println!("Sucess!");
+*/
+    println!("{localhost:?}");
+    println!("{remote:?}");
 }
