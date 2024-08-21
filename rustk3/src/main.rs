@@ -15,12 +15,19 @@ fn main() {
 	    .title("Hello again, now with gtk3!")
 	    .build();
 
-	let test = Button::with_label("Click here");
-	test.connect_clicked(|_| {
-	    eprintln!("Not fast enough!");
+	let btn = Button::with_label("Click here");
+	btn.connect_clicked(|_| {
+	    eprintln!("Wrong button!");
 	});
 
-	win.add(&test);
+	let other_btn = Button::with_label("Click here");
+	other_btn.connect_clicked(|_| {
+	    eprintln!("That's right!");
+	});
+
+	
+	win.add(&btn);
+	win.add(&other_btn);
 	win.show_all();
   });
     app.run();
