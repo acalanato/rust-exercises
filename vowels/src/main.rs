@@ -1,16 +1,15 @@
+
 fn get_count(string: &str) -> usize {
     let mut vowels_count: usize = 0;
-    //let (vowel, letter) = (['a','e','i','o','u'], string.as_bytes().iter());
-    let (vowel, letter) = (['a','e','i','o','u'], string.chars());
+    let list = string.chars().map(|x| x as u8).collect::<Vec<u8>>();
+    let letter = "aeiou".chars().map(|x| x as u8).collect::<Vec<u8>>();
 
-    //let b = ['a','e','i','o','u'];
-    for x in letter {
-	for y in vowel {
-	    if letter[x] == vowel[y] {
-		vowels_count += 1;
-	    }
+    for x in list {
+	if letter.contains(&list[x]) {
+	    vowels_count += 1;
 	}
     }
+    //let b = ['a','e','i','o','u'];
     vowels_count
 }
  /*
@@ -26,7 +25,7 @@ fn get_count(string: &str) -> usize {
 
 
 fn main() {
-    println!("Hello, world!");
+    println!("{}", get_count("abracadabra"));
 }
 
 #[test]
