@@ -1,28 +1,36 @@
 
-fn get_count(string: &str) -> usize {
+fn _get_count(string: &str) -> usize {
     let mut vowels_count: usize = 0;
     let list = string.chars().map(|x| x as u8).collect::<Vec<u8>>();
     let letter = "aeiou".chars().map(|x| x as u8).collect::<Vec<u8>>();
-
-    for x in list {
-	if letter.contains(&list[x]) {
+    let mut i = 0;
+    for x in list.iter() {
+	if x == &letter[i] {
 	    vowels_count += 1;
 	}
+	i += 1;
     }
-    //let b = ['a','e','i','o','u'];
+//    list.iter().filter_map(|s| Some(list.contains(letter[s])));
+
     vowels_count
 }
- /*
-  for x in row {
-    for y in col{
-      row[x][y] = word[y]
+
+// // // // ** \\ \\ \\ \\
+
+fn get_count(string: &str) -> usize {
+    let list = string.chars().map(|x| x as u8).collect::<Vec<u8>>();
+    let mut vowels_count: usize = 0;
+    for x in list.iter() {
+	if "aeiou".as_bytes().contains(x) {vowels_count += 1;}
     }
-  }
-        break 'out
- */
+    vowels_count
+}
 
-
-
+/* Top answer
+fn get_count(string: &str) -> usize {
+    string.matches(|x| match x {'a'|'e'|'i'|'o'|'u' => true, _ => false}).count()
+}
+*/
 
 fn main() {
     println!("{}", get_count("abracadabra"));
