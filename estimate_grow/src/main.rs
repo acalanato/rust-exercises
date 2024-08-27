@@ -1,8 +1,8 @@
 fn nb_year(p0: i32, percent: f64, aug: i32, p: i32)-> i32 {
     let mut n_years = 0;
-    let mut pop = p0.clone();
-    while pop <= p {
-	pop = pop + ((p0 as f64 * (percent / 100.0)) + aug as f64) as i32;
+    let mut population = p0.clone();
+    while population <= p {
+	population = population + ((population as f64 * (percent / 100.0)) as i32) + aug;
 	n_years += 1;
     }
     n_years
