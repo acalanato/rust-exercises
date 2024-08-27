@@ -1,4 +1,4 @@
-fn nb_year(p0: i32, percent: f64, aug: i32, p: i32)-> i32 {
+fn  nb_year(p0: i32, percent: f64, aug: i32, p: i32)-> i32 {
     let mut n_years = 0;
     let mut population = p0.clone();
     while population <= p {
@@ -8,9 +8,21 @@ fn nb_year(p0: i32, percent: f64, aug: i32, p: i32)-> i32 {
     n_years
 }
 
+fn  _nb_year(p0: i32, percent: f64, aug: i32, p: i32)-> i32 {
+    let (mut population, percent, imigrating, target) = (p0 as f64, percent, aug as f64, p as f64);
+    let mut result = 0;
+    while population <= target {
+	population = population + (population * (percent / 100.0) + imigrating);
+	result += 1
+    }
+    result
+}
 
 fn main() {
     println!("{}", nb_year(1500, 5.0, 100, 5000));
+    println!("{}", nb_year(1500000, 2.5, 10000, 2000000));
+    println!("{}", nb_year(1500000, 0.0, 10000, 2000000));
+
 }
 
 #[cfg(test)]
@@ -34,6 +46,7 @@ fn main() {
     fn basic_tests() {
         dotest(1500, 5.0, 100, 5000, 15);
         dotest(1500000, 2.5, 10000, 2000000, 10);
+	dotest(1500000, 0.0, 10000, 2000000, 50)
         
     }
 }
