@@ -1,20 +1,33 @@
 
 fn points(games: &[String]) -> u32 {
-    let score = 0;
-    let to_int = |s: String| s.parse::<i32>().unwrap();
-    let games_iter = games.split(":").into_iter();
-    for x in games_iter {
-	if to_int(x.0) > to_int(x.1) {
-	    
-	}
+    let mut score = 0;    
+    for x in games {
+	let (a, b) = x.split_at(1);
+	if a.cmp(b) == std::cmp::Ordering::Greater {
+	    score += 3
+	} else if a.eq(b) {
+	    score += 1_u32
+	} else { continue }
     }
     score
 }
 
-
-
 fn main() {
-    println!("Hello, world!");
+    let score = points(&["1:0".to_string(),
+			 "2:0".to_string(),
+			 "3:0".to_string(),
+			 "4:0".to_string(),
+			 "2:1".to_string(),
+			 "3:1".to_string(),
+			 "4:1".to_string(),
+			 "3:2".to_string(),
+			 "4:2".to_string(),
+			 "4:3".to_string(),
+    ]);
+
+    println!("{:?}", "3".cmp("2"));
+    println!("{}", score);
+    //println!("\x1B[1;34m{}", score);
 }
 
 
