@@ -1,13 +1,28 @@
 
-fn points(games: &[String]) -> u32 {
-    let mut score = 0;    
+fn _points(games: &[String]) -> u32 {
+    let mut score: u32 = 0;    
     for x in games {
 	let (a, b) = x.split_at(1);
 	if a.cmp(b) == std::cmp::Ordering::Greater {
 	    score += 3
 	} else if a.eq(b) {
-	    score += 1_u32
+	    score += 1
 	} else { continue }
+    }
+    score
+}
+
+fn points(games: &[String]) -> u32 {
+    use std::cmp::Ordering;
+    let mut score: u32 = 0;
+    
+    for x in games {
+	let (a, b) = x.split_at(1);
+	match a.cmp(b) {
+	    Ordering::Greater => score += 3_u32,
+	    Ordering::Equal => score += 1_u32,
+	    _ => continue,
+	}
     }
     score
 }
