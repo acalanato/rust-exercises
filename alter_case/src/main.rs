@@ -1,5 +1,5 @@
 
-fn to_alternating_case(s: &str) -> String {
+fn to_alternating_case(s: &str) -> String { //my fn
     let mut out = Vec::new();
     for x in s.as_bytes() {
 	if x.is_ascii_lowercase() {
@@ -8,12 +8,30 @@ fn to_alternating_case(s: &str) -> String {
 	    out.push(x.to_ascii_lowercase())
 	}
     }
-    //out.iter().map(|c| std::str::from_utf8())
-    //println!("{:?}", out);
-    //s.to_string()
-    
+    String::from_utf8(out).expect("")
 }
 
+fn _to_alternating_case(s: &str) -> String { //top fn
+    s.chars().map(|c| {
+        match c {
+            c if c.is_uppercase() => c.to_lowercase().next().unwrap(),
+            c if c.is_lowercase() => c.to_uppercase().next().unwrap(),
+            _ => c
+        }
+    }).collect()
+}
+
+/*
+fn _to_alternating_case2(s: &str) -> String { //variation
+  s.chars().map(|x| {
+    match x {
+      'a'...'z' => x.to_ascii_uppercase(),
+      'A'...'Z' => x.to_ascii_lowercase(),
+      _ => x,
+    }
+  }).collect()
+}
+*/
 
 fn main() {
     to_alternating_case("Teste");
