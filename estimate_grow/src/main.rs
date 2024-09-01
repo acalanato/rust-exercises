@@ -13,7 +13,7 @@ fn  _nb_year(p0: i32, percent: f64, aug: i32, p: i32)-> i32 {
     let mut result = 0;
     while population <= target {
 	population = population + (population * (percent / 100.0) + imigrating);
-	result += 1
+	if population <= target {result += 1}
     }
     result
 }
