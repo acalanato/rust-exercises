@@ -27,6 +27,10 @@ fn validate_pin(pin: &str) -> bool {
     }
 }
 
+fn validate_pin2(pin: &str) -> bool {
+    pin.chars().all(|c| c.is_digit(10)) && (pin.len() == 4 || pin.len() == 6)
+}
+
 fn main() {
     //validate_pin("1234567");
     println!("{}", validate_pin("-1234"));
