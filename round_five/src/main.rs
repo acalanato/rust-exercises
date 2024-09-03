@@ -1,4 +1,8 @@
 
+fn _round_to_next_5 (n: i32) -> i32 {
+    n + (5 - n % 5) % 5
+}
+
 fn round_to_next_5(n: i32) -> i32 {
     let mut out = n;
     while out % 5 != 0 {
