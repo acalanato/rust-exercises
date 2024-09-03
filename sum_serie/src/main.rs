@@ -1,22 +1,35 @@
 
-fn _series_sum(n: u32) -> String {
+fn series_sum(n: u32) -> String {
+
+    let serie: Vec<_> = (0..n).map(|x| 1.0 * x as f32).collect();
+    
     let mut result = 0.0;
+
     for x in 0..=n {
-	result =  result + (1.0 / (1 +(x * 1)) as f32)
+	result =  result + (1.0 + (1.0 / (x as f32 * 1.0)) as f32)
     }
     format!("{:.2}", result)
 }
 
+//    (0..=n.)into_iter().map(|x| x as f32 * (1.0 / x as f32 + (1..)).step_by(3)))
 
-fn series_sum(n: u32) -> String {
-    (0..=n).into_iter().map(|x|  x as f32 * (1.0 / x as f32))
+fn _series_sum(n: u32) -> String {
+    let serie: Vec<_> = (1..n).step_by(3).collect();
+    let mut result = 1.0;
+    for (x, _y) in (0..n).into_iter().enumerate() {
+	result += 1.0 * serie[x] as f32
+    }
+    format!("{:.2}",result)
+/*
+    (0..=n).into_iter().map(|x, n| x as f32 * serie[n])
 	.last()
 	.unwrap()
 	.to_string()
+*/
 }
 
 fn main() {
-    println!("{}", series_sum(4));
+    println!("{}", series_sum(2));
 }
 
 #[cfg(test)]
