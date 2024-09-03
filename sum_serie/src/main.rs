@@ -1,4 +1,5 @@
-fn series_sum(n: u32) -> String {
+
+fn _series_sum(n: u32) -> String {
     let mut result = 0.0;
     for x in 0..=n {
 	result =  result + (1.0 / (1 +(x * 1)) as f32)
@@ -6,8 +7,16 @@ fn series_sum(n: u32) -> String {
     format!("{:.2}", result)
 }
 
+
+fn series_sum(n: u32) -> String {
+    (0..=n).into_iter().map(|x|  x as f32 * (1.0 / x as f32))
+	.last()
+	.unwrap()
+	.to_string()
+}
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", series_sum(4));
 }
 
 #[cfg(test)]
