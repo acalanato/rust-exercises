@@ -1,26 +1,35 @@
 
 fn accum(s:&str)->String {
-    //let out = s.chars().map(|x| x.to_string()).collect::<Vec<String>>();
+    let mut words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
 
-    let mut out = String::new();
-    for x in s.chars().into_iter() {
-	x.to_string().extend(x)
+    //for x in s.as_bytes() {
+    for (_i, val) in s.as_bytes().into_iter().enumerate() {
+	
+	words.push(*val);
+	//if val != words.last().unwrap() {words.push(b'-')}; this is dumb
+
     }
-    out
+    String::from_utf8(words).unwrap()
+}
     
 /*
-    for (i, val) in out.iter().enumerate() {
-	for 0..i in val.chars() {
-	    
-	}
-    }
-*/
-    //out.concat()
+
 }
 
+fn accum(s:&str)->String {
+    let mut out = Vec::new();
+    s.chars().map(|c| out.extend(c) ).collect()
+}
+
+ */
+
 fn main() {
+
+    println!("{}", accum("ZpglnRxqenU"));
+    
     println!("Hello, world!");
 }
+
 
 
 #[test]
