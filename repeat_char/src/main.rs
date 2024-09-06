@@ -1,11 +1,13 @@
 
 fn accum(s:&str)->String {
-    let mut words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
-
-    //for x in s.as_bytes() {
-    for (_i, val) in s.as_bytes().into_iter().enumerate() {
+    let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
+    let mut out: Vec<u8> = Vec::new();
+    for (i, val) in s.as_bytes().into_iter().enumerate() {
 	
-	words.push(*val);
+	for _x in 0..=i {out.push(*val);
+			 out.push(b'-');
+	};
+	
 	//if val != words.last().unwrap() {words.push(b'-')}; this is dumb
 
     }
@@ -27,7 +29,7 @@ fn main() {
 
     println!("{}", accum("ZpglnRxqenU"));
     
-    println!("Hello, world!");
+    println!("Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuu");
 }
 
 
