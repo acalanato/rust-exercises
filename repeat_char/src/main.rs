@@ -1,29 +1,33 @@
 
 fn accum(s:&str)->String {
-    let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
-    let mut out: Vec<u8> = Vec::new();
-    for (i, val) in s.as_bytes().into_iter().enumerate() {
-	
-	for _x in 0..=i {out.push(*val);
-			 out.push(b'-');
-	};
-	
-	//if val != words.last().unwrap() {words.push(b'-')}; this is dumb
+    //let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
 
+
+    let mut out: Vec<&u8> = Vec::new();
+    for (i, val) in s.as_bytes().into_iter().enumerate() {
+	out = std::iter::repeat(val).take(i).collect::<Vec<_>>();
+
+	//for _x in 0..=i {out.push(*val);
+	//println!();
+	//};
+	//out.push(b'-');
     }
-    String::from_utf8(words).unwrap()
+    String::from_utf8(out).unwrap()
 }
     
-/*
 
+
+fn _accum(s:&str)->String {
+    let mut out: Vec<String> = Vec::new();
+    let list = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
+    let repeat = |x: char, y: usize| std::iter::repeat(x).take(y);
+    
+    //String::from_utf8(out).unwrap()
+    
+    println!("{:?}", out);
+    "".to_string()
 }
 
-fn accum(s:&str)->String {
-    let mut out = Vec::new();
-    s.chars().map(|c| out.extend(c) ).collect()
-}
-
- */
 
 fn main() {
 
