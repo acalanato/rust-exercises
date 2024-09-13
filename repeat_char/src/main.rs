@@ -3,19 +3,16 @@ fn accum(s:&str)->String {
     //let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
 
 
-    let mut out: Vec<&u8> = Vec::new();
+    let mut out: Vec<u8> = Vec::new();
     for (i, val) in s.as_bytes().into_iter().enumerate() {
 	//out.into_iter().repeat(val).take(i).flatten();
-	[out, val].join("")
-
-	//for _x in 0..=i {out.push(*val);
-	//println!();
-	//};
-	//out.push(b'-');
+	for _x in 0..=i {
+	    out.push(*val)
+	}
+	out.push(b'-');
     }
-    println!("{:?}", out);
-    //String::from_utf8(out).unwrap()
-    String::from("")
+    //println!("{:?}", out);
+    String::from_utf8(out).unwrap()
 }
     
 
