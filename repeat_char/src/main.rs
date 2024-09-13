@@ -3,9 +3,10 @@ fn accum(s:&str)->String {
     //let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
 
 
-    let mut out: Vec<u8> = Vec::new();
+    let mut out: Vec<&u8> = Vec::new();
     for (i, val) in s.as_bytes().into_iter().enumerate() {
-	out = std::iter::repeat(val).take(i).flatten();
+	//out.into_iter().repeat(val).take(i).flatten();
+	[out, val].join("")
 
 	//for _x in 0..=i {out.push(*val);
 	//println!();
