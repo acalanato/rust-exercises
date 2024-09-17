@@ -2,7 +2,6 @@
 fn accum(s:&str)->String {
     //let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
 
-
     let mut out: Vec<u8> = Vec::new();
     for (i, val) in s.as_bytes().into_iter().enumerate() {
 	//out.into_iter().repeat(val).take(i).flatten();
@@ -14,29 +13,26 @@ fn accum(s:&str)->String {
     //println!("{:?}", out);
     String::from_utf8(out).unwrap()
 }
-    
 
 #[allow(unused)]
 fn _accum(s:&str)->String {
-    let mut out: Vec<String> = Vec::new();
-    let list = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
-    let repeat = |x: char, y: usize| std::iter::repeat(x).take(y);
-    
-    //String::from_utf8(out).unwrap()
-    
+    let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
+    let mut out: Vec<Vec<u8>> = Vec::new();
+    for x in 0..s.len() {
+	out.push([words[x]].to_vec())
+    }
     println!("{:?}", out);
     "".to_string()
 }
 
-
 fn main() {
 
+    println!("{}", _accum("ZpglnRxqenU"));
+    
     println!("{}", accum("ZpglnRxqenU"));
     
     println!("Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuu");
 }
-
-
 
 #[test]
 fn basic_tests() {
