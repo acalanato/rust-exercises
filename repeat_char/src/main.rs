@@ -16,12 +16,18 @@ fn accum(s:&str)->String {
 
 #[allow(unused)]
 fn _accum(s:&str)->String {
-    let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
-    let mut out: Vec<Vec<u8>> = Vec::new();
-    for x in 0..s.len() {
-	out.push([words[x]].to_vec())
+    let words = s.chars().map(|x| (x.to_string())).collect::<Vec<String>>();
+    enum Words {
+	Letter
     }
-    println!("{:?}", out);
+    let mut out: Vec<Vec<String>> = Vec::new();
+    for x in 0..s.len() {
+	for y in 0..x {
+	    out.push([words[x].clone()].to_vec())
+	}
+    }
+    
+    println!("{:?}", out[0]);
     "".to_string()
 }
 
