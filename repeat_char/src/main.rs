@@ -1,16 +1,14 @@
 
 fn accum(s:&str)->String {
-    //let words = s.chars().map(|x| x as u8).collect::<Vec<u8>>();
-
     let mut out: Vec<u8> = Vec::new();
     for (i, val) in s.as_bytes().into_iter().enumerate() {
-	//out.into_iter().repeat(val).take(i).flatten();
-	for _x in 0..=i {
-	    out.push(*val)
+	out.push(val.to_ascii_uppercase());
+	for _x in 1..=i {
+	    out.push(val.to_ascii_lowercase())
 	}
 	out.push(b'-');
     }
-    //println!("{:?}", out);
+    out.pop();
     String::from_utf8(out).unwrap()
 }
 
@@ -24,20 +22,27 @@ fn _accum(s:&str)->String {
     for x in 0..s.len() {
 	for y in 0..x {
 	    out.push([words[x].clone()].to_vec())
-	}
+	};
     }
     
-    println!("{:?}", out[0]);
+    println!("{:?}", out);
     "".to_string()
+}
+
+fn _accum2(s:&str)->String {
+    s.chars().enumerate()
+        .map(|(i,c)|c.to_string().to_uppercase() + c.to_string().to_lowercase().repeat(i).as_str())
+        .collect::<Vec<String>>()
+        .join("-")
 }
 
 fn main() {
 
-    println!("{}", _accum("ZpglnRxqenU"));
+    //println!("{}", _accum("ZpglnRxqenU"));
     
     println!("{}", accum("ZpglnRxqenU"));
     
-    println!("Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuu");
+    println!("Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu");
 }
 
 #[test]
