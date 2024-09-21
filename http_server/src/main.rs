@@ -1,6 +1,19 @@
 #[allow(unused_imports)]
 use std::net::{TcpListener, TcpStream};
-use std::io::{prelude::*, BufReader};    
+use std::io::{prelude::*, BufReader};
+use std::fs::File;
+
+fn config<'a>() -> &'a str {
+    let file = File::open("config.json");
+    
+    match file {
+	"HTML" => "",
+	"ADDRESS" => "",
+	"PORT" => "",
+	_ => "",
+    }
+    
+}
 
 #[allow(unused)]
 fn handle_connection(mut stream: TcpStream) {
@@ -32,6 +45,5 @@ fn main() {
 	    Ok(stream) => {handle_connection(stream)},
 	    Err(e) => println!("fonfon: {e}"),
 	}
-    }
-   
+    }   
 }
