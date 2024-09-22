@@ -1,11 +1,20 @@
 fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
-    //Vec<_>::from(numbers.sort())
-    numbers.to_owned().remove(2);
-    numbers.to_vec()
+    let mut rem: u32 = 0;
+    let out = numbers;
+    for x in out.iter() {
+	if x > &rem {
+	    rem.clone_from(x);
+	}
+    }
+    println!("{:?}", rem);
+    out.to_vec()
 }
 
 
 fn main() {
+
+    println!("{:?}", remove_smallest(&[1,2,3,4,5]));
+    
     println!("Hello, world!");
 }
 
