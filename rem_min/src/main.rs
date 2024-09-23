@@ -1,12 +1,21 @@
 fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
     let mut min = numbers[0];
+    let mut rem = 1;
+    let mut out = Vec::new();
     for x in numbers.iter() {
 	if x < &min {
 	    min.clone_from(x);
 	}
     }
-    println!("{:?}", min);
-    numbers.to_vec().retain(|x| x != min) //fix this line
+    for x in numbers {
+	if x == &min && rem == 1{
+	    rem = 0;
+	    continue;	   
+	} else {
+	    out.push(*x);
+	}
+    }
+    out
 }
 
 
@@ -36,5 +45,6 @@ mod tests {
         dotest(&[1, 2, 3, 4], &[2, 3, 4]);
         dotest(&[5, 3, 2, 1, 4], &[5, 3, 2, 4]);
         dotest(&[1, 2, 3, 1, 1], &[2, 3, 1, 1]);
+	dotest(&[0], &[0]);
     }
 }
