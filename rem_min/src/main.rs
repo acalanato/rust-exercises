@@ -1,22 +1,38 @@
+
+
 fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
-    let mut min = numbers[0];
-    let mut rem = 1;
-    let mut out = Vec::new();
-    for x in numbers.iter() {
-	if x < &min {
-	    min.clone_from(x);
+    if numbers.len() > 0 {
+	let mut min = numbers[0];
+	let mut rem = 1;
+	let mut out = Vec::new();
+	for x in numbers.iter() {
+	    if x < &min {
+		min.clone_from(x);
+	    }
 	}
-    }
-    for x in numbers {
-	if x == &min && rem == 1{
-	    rem = 0;
-	    continue;	   
-	} else {
-	    out.push(*x);
+	for x in numbers {
+	    if x == &min && rem == 1{
+		rem = 0;
+		continue;	   
+	    } else {
+		out.push(*x);
+	    }
 	}
+	return out
+    } else {
+	return numbers.to_vec()
     }
-    out
 }
+
+fn _remove_smallest(numbers: &[u32]) -> Vec<u32> {
+    let mut n = numbers.to_vec();
+    if let Some((pos, _)) = n.iter().enumerate().min_by_key(|&(_, x)| x) {
+        n.remove(pos);
+    }
+    n
+}
+
+
 
 
 fn main() {
