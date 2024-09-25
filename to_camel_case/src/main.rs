@@ -1,11 +1,39 @@
 
+#[allow(unused)]
+fn _to_camel_case(text: &str) -> String {
+    //text.chars().filter(|&c| !"_".contains(c.to_ascii_lowercase())).collect()
+    let words = text.split_terminator("_").into_iter().collect::<Vec<&str>>();
+    for x in words.iter() {
+	//x[0..1].make_ascii_uppercase();
+    }
+    words.concat()
+}
+
 fn to_camel_case(text: &str) -> String {
-    todo!()
+    if text.len() > 1 {
+	text.split("_").map(|x| x[0..1].to_ascii_uppercase() + &x[1..]).collect()
+    } else {
+	text.chars().collect()
+    }
 }
 
 
+/*
+
+x[0..1].make_ascii_uppercase();
+
+
+let mut c = s.chars();
+    match c.next() {
+        None => String::new(),
+        Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+*/
+
+
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", to_camel_case("the_stealth_warrior"));
+    println!("Sucess!");
 }
 
 // Add your tests here.
