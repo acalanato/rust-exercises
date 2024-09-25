@@ -1,20 +1,25 @@
 
 #[allow(unused)]
 fn _to_camel_case(text: &str) -> String {
-    //text.chars().filter(|&c| !"_".contains(c.to_ascii_lowercase())).collect()
-    let words = text.split_terminator("_").into_iter().collect::<Vec<&str>>();
-    for x in words.iter() {
-	//x[0..1].make_ascii_uppercase();
+    let mut out = text.bytes().map(|x| x as u8).collect::<Vec<u8>>();
+    for x in out {
+	if x.is_ascii_punctuation() {
+	    x.to_ascii_lowercase();
+	}
     }
-    words.concat()
+    "".to_string()
 }
 
 fn to_camel_case(text: &str) -> String {
     if text.len() > 1 {
-	text.split("_").map(|x| x[0..1].to_ascii_uppercase() + &x[1..]).collect()
+	text.replace("-","_")
+	    .split("_")
+	    .map(|x| x[0..1].to_ascii_uppercase() + &x[1..] )
+	    .collect()
     } else {
 	text.chars().collect()
     }
+    
 }
 
 
