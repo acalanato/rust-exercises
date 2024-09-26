@@ -18,11 +18,18 @@ fn to_camel_case(text: &str) -> String {
 	    .collect()
     } else {
 	text.chars().collect()
-    }
-    
+    }    
 }
 
 
+fn to_camel_case2(text: &str) -> String {
+    let s = text.as_bytes().into_iter();
+    for x in s {
+	if s.next().eq(&Some(&b'_')) {x.to_ascii_uppercase()
+	} else {continue};
+    };
+    String::from_utf8(s.as_slice().to_vec()).unwrap()
+}
 /*
 
 x[0..1].make_ascii_uppercase();
