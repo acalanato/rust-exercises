@@ -10,7 +10,7 @@ fn _to_camel_case(text: &str) -> String {
     "".to_string()
 }
 
-fn to_camel_case(text: &str) -> String {
+fn __to_camel_case(text: &str) -> String {
     if text.len() > 1 {
 	text.replace("-","_")
 	    .split("_")
@@ -23,17 +23,27 @@ fn to_camel_case(text: &str) -> String {
 
 
 fn to_camel_case2(text: &str) -> String {
-    let s = text.as_bytes().into_iter();
-    for x in s {
-	if s.next().eq(&Some(&b'_')) {x.to_ascii_uppercase()
-	} else {continue};
-    };
-    String::from_utf8(s.as_slice().to_vec()).unwrap()
+    let mut out: Vec<u8> = Vec::new();
+    let mut i = 0;
+    for x in text.replace("-","_").as_bytes().into_iter() {
+	if x.eq(&b'_') {
+	    i = 1;
+	    if i == 1 {
+		out.push( x.to_ascii_uppercase());
+	    }
+	} else {
+	    out.push(*x);
+	}
+	i = 0;
+    }
+	//).collect::<Vec<_>>();
+    String::from_utf8(out).unwrap()
+    //println!("{:?}", out);
+    //"done".to_string()
 }
 /*
 
 x[0..1].make_ascii_uppercase();
-
 
 let mut c = s.chars();
     match c.next() {
@@ -44,7 +54,7 @@ let mut c = s.chars();
 
 
 fn main() {
-    println!("{}", to_camel_case("the_stealth_warrior"));
+    println!("{}", to_camel_case2("the_stealth_warrior"));
     println!("Sucess!");
 }
 
