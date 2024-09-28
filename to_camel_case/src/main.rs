@@ -22,24 +22,18 @@ fn __to_camel_case(text: &str) -> String {
 }
 
 
-fn to_camel_case2(text: &str) -> String {
-    let mut out: Vec<u8> = Vec::new();
-    let mut i = 0;
-    for x in text.replace("-","_").as_bytes().into_iter() {
-	if x.eq(&b'_') {
-	    i = 1;
-	    if i == 1 {
-		out.push( x.to_ascii_uppercase());
-	    }
+fn to_camel_case(text: &str) -> String {
+    let chars: Vec<_> = text.replace("-", "_").as_bytes().iter().map(|x| *x as u8).collect();
+    let mut out = Vec::new();
+    for (i,val) in chars.iter().enumerate() {
+	if val == &b'_' {
+	    out.push(chars[i+1].to_ascii_uppercase());
 	} else {
-	    out.push(*x);
+	    out.push(chars[i]);
 	}
-	i = 0;
     }
-	//).collect::<Vec<_>>();
     String::from_utf8(out).unwrap()
-    //println!("{:?}", out);
-    //"done".to_string()
+    //"placeholder".to_string()
 }
 /*
 
@@ -54,7 +48,7 @@ let mut c = s.chars();
 
 
 fn main() {
-    println!("{}", to_camel_case2("the_stealth_warrior"));
+    println!("{}", to_camel_case("the_stealth_warrior"));
     println!("Sucess!");
 }
 
