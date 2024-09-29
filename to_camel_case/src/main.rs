@@ -1,39 +1,30 @@
 
 #[allow(unused)]
-fn _to_camel_case(text: &str) -> String {
-    let mut out = text.bytes().map(|x| x as u8).collect::<Vec<u8>>();
-    for x in out {
-	if x.is_ascii_punctuation() {
-	    x.to_ascii_lowercase();
-	}
-    }
-    "".to_string()
-}
-
-fn __to_camel_case(text: &str) -> String {
+fn to_camel_case(text: &str) -> String {
+    let mut out = String::new();
     if text.len() > 1 {
-	text.replace("-","_")
+	out = text.replace("-","_")
 	    .split("_")
 	    .map(|x| x[0..1].to_ascii_uppercase() + &x[1..] )
-	    .collect()
+	    .collect();
+	out = text[0..1].to_ascii_lowercase() + &out[1..];
     } else {
-	text.chars().collect()
-    }    
+	out = text.chars().collect();
+    }
+    out
 }
 
-
-fn to_camel_case(text: &str) -> String {
+fn _to_camel_case(text: &str) -> String {
     let chars: Vec<_> = text.replace("-", "_").as_bytes().iter().map(|x| *x as u8).collect();
     let mut out = Vec::new();
     for (i,val) in chars.iter().enumerate() {
 	if val == &b'_' {
 	    out.push(chars[i+1].to_ascii_uppercase());
 	} else {
-	    out.push(chars[i]);
+	    out.push(*val);
 	}
     }
     String::from_utf8(out).unwrap()
-    //"placeholder".to_string()
 }
 /*
 
