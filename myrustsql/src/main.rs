@@ -1,16 +1,26 @@
 use std::fs::read_to_string;
-//use mysql::*;
-//use mysql::prelude::*;
+use mysql::*;
+use mysql::prelude::*;
 
 fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
 
-    let buff = read_to_string("config.cfg")?;
-    let file: Vec<_> = buff.lines().map(|x| x.split(": ")).collect();
-
-
-    //let url  = "mysql:://" + *cnf.user + cnf.password + cnf.addr + cnf.port + cnf.db;
+    let file = read_to_string("config.cfg")?;
+    let cnf: Vec<_> = file.lines()
+	.flat_map(|c| c.split_whitespace())
+	.collect::<Vec<&str>>();
+    let url: &str = &("mysql://".to_owned()
+		      + cnf[1]
+		      + ":"
+		      + cnf[3]
+		      + "@"
+		      + cnf[5]
+		      + ":"
+		      + cnf[7]
+		      + "/"
+		      + cnf[9]);
     
     //let url = "mysql://user:user@127.0.0.1:3306/checkin";
+
     let pool = Pool::new(url)?;
 
     let mut conn = pool.get_conn()?;
@@ -23,9 +33,9 @@ total_att int not null,
 nome text
 )")?;
 
-    for x in file {
-	println!("{:?}", x.to_owned());
-    }
+
+    println!("{:?}", url);
+    
     println!("sucess!");
     Ok(())
 }
