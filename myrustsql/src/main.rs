@@ -25,14 +25,16 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
 
     let mut conn = pool.get_conn()?;
 
-    conn.query_drop(
-	r"
+    conn.query_drop(r"
 CREATE TABLE IF NOT EXISTS aulas (
 aluno_id int not null,
 total_att int not null,
 nome text
 )")?;
 
+    let test: Option<String> = conn.query_first(r"
+SELECT * FROM aulas WHERE aluno_id = 1
+").expect("fon fon");
 
     println!("{:?}", url);
     
