@@ -19,7 +19,7 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
 		      + "/"
 		      + cnf[9]);
     
-    //let url = "mysql://user:user@127.0.0.1:3306/checkin";
+    //let url = "mysql://user:passwd@127.0.0.1:3306/checkin";
 
     let pool = Pool::new(url)?;
 
@@ -32,11 +32,17 @@ total_att int not null,
 nome text
 )")?;
 
-    let test: Option<String> = conn.query_first(r"
-SELECT * FROM aulas WHERE aluno_id = 1
-").expect("fon fon");
+    conn.exec_drop(r"
+INSERT INTO aulas (aluno_id, total_att, nome)
+VALUES ('1', '390', 'fulano')", ("wtf",))?;
 
-    println!("{:?}", url);
+//tx.exec_drop("INSERT INTO tmp (a) VALUES (?)", ("foo",))?;
+    
+    let test: Option<String> = conn.query_first(r"
+SELECT * FROM aulas WHERE aluno_id = 1;
+")?;
+
+    println!("{:?}", test);
     
     println!("sucess!");
     Ok(())
@@ -44,16 +50,6 @@ SELECT * FROM aulas WHERE aluno_id = 1
 
 
 /*
-use mysql::*;
-use mysql::prelude::*;
-
-#[derive(Debug, PartialEq, Eq)]
-struct Payment {
-    customer_id: i32,
-    amount: i32,
-    account_name: Option<String>,
-}
-
 
 fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
     let url = "mysql://root:password@localhost:3307/db_name";
