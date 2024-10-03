@@ -3,11 +3,12 @@
 fn to_camel_case(text: &str) -> String {
     let mut out = String::new();
     if text.len() > 1 {
+	let first = &text[0..1];
 	out = text.replace("-","_")
 	    .split("_")
 	    .map(|x| x[0..1].to_ascii_uppercase() + &x[1..] )
 	    .collect();
-	out = text[0..1].to_ascii_lowercase() + &out[1..];
+	out = first.to_owned() + &out[1..];
     } else {
 	out = text.chars().collect();
     }
@@ -26,20 +27,23 @@ fn _to_camel_case(text: &str) -> String {
     }
     String::from_utf8(out).unwrap()
 }
-/*
 
-x[0..1].make_ascii_uppercase();
-
-let mut c = s.chars();
-    match c.next() {
-        None => String::new(),
-        Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
-*/
+ /*
+fn to_camel_case(text: &str) -> String {
+    text.split(&['-', '_'])
+        .enumerate()
+        .map(|(i, w)| match i {
+            0 => w.to_string(),
+            _ => w[..1].to_uppercase() + &w[1..],
+        })
+        .collect()
+}
+ */
 
 
 
 fn main() {
-    println!("{}", to_camel_case("the_stealth_warrior"));
+    println!("{}", to_camel_case("The_stealth_warrior"));
     println!("Sucess!");
 }
 
