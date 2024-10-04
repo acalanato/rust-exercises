@@ -17,8 +17,12 @@ fn _rgb(r: i32, g: i32, b: i32) -> String {
 }
 
 fn rgb(r: i32, g: i32, b: i32) -> String {
+    //let to_hex = |c: i32| if c.to_string().len() == 1 {"0".to_owned() + &c.to_string()} else {c.to_string()};
+    let to_hex = |c: i32| if c.to_string().len() == 1 {
+	format!("{:02x?}", c % 16).to_ascii_uppercase()
+    } else {  format!("{:x?}", c % 16).to_ascii_uppercase() };
 
-    format!("{:X?}{:X?}{:X?}", r % 16, g % 16, b % 16)
+    format!("{}{}{}", to_hex(r), to_hex(g), to_hex(b))
 
 }
 
