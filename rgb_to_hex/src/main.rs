@@ -1,41 +1,22 @@
 
-fn _rgb(r: i32, g: i32, b: i32) -> String {
-    let mut out = String::new();
-    for x in vec!(r,g,b) {
-	match x {
-	    1..=10 => out.push_str(&(format!("{:02?}", x))),
-	    11 => out.push_str("a"),
-	    12 => out.push_str("b"),
-	    13 => out.push_str("c"),
-	    14 => out.push_str("d"),
-	    15 => out.push_str("e"),
-	    16 => out.push_str("f"),
-	    _ => out.push_str("00"),
-	};
-    }
-    out
+fn rgb(r: i32, g: i32, b: i32) -> String {
+    format!("{:02x?}{:02x?}{:02x?}", r.clamp(0, 255), g.clamp(0, 255), b.clamp(0, 255) ).to_ascii_uppercase()
 }
 
-fn rgb(r: i32, g: i32, b: i32) -> String {
-    //let to_hex = |c: i32| if c.to_string().len() == 1 {"0".to_owned() + &c.to_string()} else {c.to_string()};
+fn _rgb(r: i32, g: i32, b: i32) -> String {
+
     let to_hex = |c: i32| if c.to_string().len() == 1 {
 	format!("{:02x?}", c % 16).to_ascii_uppercase()
-    } else {  format!("{:x?}", c % 16).to_ascii_uppercase() };
+
+    } else { format!("{:x?}", c % 16).to_ascii_uppercase() };
 
     format!("{}{}{}", to_hex(r), to_hex(g), to_hex(b))
 
 }
 
-/*
- let s = format!("{:x}", n.round() as i32);
-    if s.len() == 1 {
-      "0".to_string() + &s
-    } else {
-      s
-    }
-  }
-  let (r, g, b) = *rgb;
-*/
+ /*
+    format!("{:02x?}{:02x?}{:02x?}", r.clamp(0, 255), g.clamp(0, 255), b.clamp(0, 255) ).to_ascii_uppercase()
+ */
 
 fn main() {
     println!("{}", rgb(1, 2, 3));
