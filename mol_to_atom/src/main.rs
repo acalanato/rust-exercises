@@ -16,11 +16,9 @@ pub fn parse_molecule(s: &str) -> Result<Molecule, ParseError> {
     let atom = s.replace("("," ").replace(")", " ").split(" ");//.collect();
     println!("{}", s);
     //((["".to_string(),0_usize]),);
-    out = Molecule {
-	buf: (""),
-	len(0_usize)
-    }
-    Result::ok(out)
+
+    let out = ("H", [("H",1)]);
+    Some(out)
 }
 
 fn main() {
