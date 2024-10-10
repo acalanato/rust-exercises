@@ -1,15 +1,26 @@
-use thiserror::Error;
+//use std::error::Error;
+use std::{result::Result,string::ParseError};
+
 
 pub type Atom = (String, usize);
 pub type Molecule = Vec<Atom>;
 
+/*
 #[derive(Error, Debug)]
 pub enum ParseError {
     // variants
 }
+*/
 
 pub fn parse_molecule(s: &str) -> Result<Molecule, ParseError> {
-    todo!();
+    let atom = s.replace("("," ").replace(")", " ").split(" ");//.collect();
+    println!("{}", s);
+    //((["".to_string(),0_usize]),);
+    out = Molecule {
+	buf: (""),
+	len(0_usize)
+    }
+    Result::ok(out)
 }
 
 fn main() {
