@@ -1,9 +1,37 @@
 fn beeramid (bonus: i32, price: f32) -> usize {
-    todo!()
+
+    let mut nbr_cans = 0.0;
+    let mut i = 0.0;
+
+    
+    if bonus > 0 && price > 0.0 {
+        nbr_cans = (bonus as f32 / price).abs();
+    } else { return 0 }
+
+    loop {
+	nbr_cans = nbr_cans - i*i;
+	if nbr_cans < 0.0 {break}
+	i += 1.0;
+    }
+    i as usize - 1_usize
 }
 
+/*
+fn beeramid(bonus: i32, price: f32) -> usize {
+    let max_count = (bonus as f32 / price) as i32;
+    (1..)
+        .scan(0, |acc, x| {
+            *acc += x * x;
+            Some(*acc)
+        })
+        .take_while(|&x| x <= max_count)
+        .count()
+}
+*/
+
 fn main() {
-    beeramid(9, 2.0);
+    let bee = beeramid(5000, 0.0);
+    println!("{}", bee);
     println!("Sucess!");
 }
 
