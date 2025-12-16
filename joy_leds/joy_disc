@@ -1,0 +1,406 @@
+/sys/class/
+├── accel
+├── ata_device
+│   ├── dev1.0 -> ../../devices/pci0000:00/0000:00:1f.2/ata1/link1/dev1.0/ata_device/dev1.0
+│   └── dev2.0 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/link2/dev2.0/ata_device/dev2.0
+├── ata_link
+│   ├── link1 -> ../../devices/pci0000:00/0000:00:1f.2/ata1/link1/ata_link/link1
+│   └── link2 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/link2/ata_link/link2
+├── ata_port
+│   ├── ata1 -> ../../devices/pci0000:00/0000:00:1f.2/ata1/ata_port/ata1
+│   └── ata2 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/ata_port/ata2
+├── backlight
+│   └── intel_backlight -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight
+├── bdi
+│   ├── 0:52 -> ../../devices/virtual/bdi/0:52
+│   ├── 179:0 -> ../../devices/virtual/bdi/179:0
+│   ├── 259:0 -> ../../devices/virtual/bdi/259:0
+│   ├── 7:0 -> ../../devices/virtual/bdi/7:0
+│   ├── 7:1 -> ../../devices/virtual/bdi/7:1
+│   ├── 7:2 -> ../../devices/virtual/bdi/7:2
+│   ├── 7:3 -> ../../devices/virtual/bdi/7:3
+│   ├── 7:4 -> ../../devices/virtual/bdi/7:4
+│   ├── 7:5 -> ../../devices/virtual/bdi/7:5
+│   ├── 7:6 -> ../../devices/virtual/bdi/7:6
+│   ├── 7:7 -> ../../devices/virtual/bdi/7:7
+│   └── 8:0 -> ../../devices/virtual/bdi/8:0
+├── block
+│   ├── loop0 -> ../../devices/virtual/block/loop0
+│   ├── loop1 -> ../../devices/virtual/block/loop1
+│   ├── loop2 -> ../../devices/virtual/block/loop2
+│   ├── loop3 -> ../../devices/virtual/block/loop3
+│   ├── loop4 -> ../../devices/virtual/block/loop4
+│   ├── loop5 -> ../../devices/virtual/block/loop5
+│   ├── loop6 -> ../../devices/virtual/block/loop6
+│   ├── loop7 -> ../../devices/virtual/block/loop7
+│   ├── mmcblk0 -> ../../devices/pci0000:00/0000:00:1c.1/0000:02:00.0/rtsx_pci_sdmmc.0/mmc_host/mmc0/mmc0:aaaa/block/mmcblk0
+│   ├── nvme0n1 -> ../../devices/pci0000:00/0000:00:1c.5/0000:04:00.0/nvme/nvme0/nvme0n1
+│   ├── nvme0n1p1 -> ../../devices/pci0000:00/0000:00:1c.5/0000:04:00.0/nvme/nvme0/nvme0n1/nvme0n1p1
+│   ├── sda -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0/block/sda
+│   ├── sda1 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0/block/sda/sda1
+│   └── sda2 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0/block/sda/sda2
+├── bluetooth
+│   └── hci0 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-4/1-4:1.0/bluetooth/hci0
+├── bsg
+│   └── 1:0:0:0 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0/bsg/1:0:0:0
+├── devcoredump
+│   └── disabled
+├── devfreq
+├── devlink
+│   ├── :ata2--scsi:1:0:0:0 -> ../../devices/virtual/devlink/:ata2--scsi:1:0:0:0
+│   ├── pci:0000:00:02.0--pci:0000:00:03.0 -> ../../devices/virtual/devlink/pci:0000:00:02.0--pci:0000:00:03.0
+│   ├── platform:PNP0C14:00--wmi:05901221-D566-11D1-B2F0-00A0C9062910 -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:05901221-D566-11D1-B2F0-00A0C9062910
+│   ├── platform:PNP0C14:00--wmi:14EA9746-CE1F-4098-A0E0-7045CB4DA745 -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:14EA9746-CE1F-4098-A0E0-7045CB4DA745
+│   ├── platform:PNP0C14:00--wmi:1F4C91EB-DC5C-460B-951D-C7CB9B4B8D5E -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:1F4C91EB-DC5C-460B-951D-C7CB9B4B8D5E
+│   ├── platform:PNP0C14:00--wmi:2B814318-4BE8-4707-9D84-A190A859B5D0 -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:2B814318-4BE8-4707-9D84-A190A859B5D0
+│   ├── platform:PNP0C14:00--wmi:2D114B49-2DFB-4130-B8FE-4A3C09E75133 -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:2D114B49-2DFB-4130-B8FE-4A3C09E75133
+│   ├── platform:PNP0C14:00--wmi:322F2028-0F84-4901-988E-015176049E2D -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:322F2028-0F84-4901-988E-015176049E2D
+│   ├── platform:PNP0C14:00--wmi:5FB7F034-2C63-45E9-BE91-3D44E2C707E4 -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:5FB7F034-2C63-45E9-BE91-3D44E2C707E4
+│   ├── platform:PNP0C14:00--wmi:7391A661-223A-47DB-A77A-7BE84C60822D -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:7391A661-223A-47DB-A77A-7BE84C60822D
+│   ├── platform:PNP0C14:00--wmi:8232DE3D-663D-4327-A8F4-E293ADB9BF05 -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:8232DE3D-663D-4327-A8F4-E293ADB9BF05
+│   ├── platform:PNP0C14:00--wmi:95F24279-4D7B-4334-9387-ACCDC67EF61C -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:95F24279-4D7B-4334-9387-ACCDC67EF61C
+│   ├── platform:PNP0C14:00--wmi:988D08E3-68F4-4C35-AF3E-6A1B8106F83C -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:988D08E3-68F4-4C35-AF3E-6A1B8106F83C
+│   ├── platform:PNP0C14:00--wmi:DF4E63B6-3BBC-4858-9737-C74F82F821F3 -> ../../devices/virtual/devlink/platform:PNP0C14:00--wmi:DF4E63B6-3BBC-4858-9737-C74F82F821F3
+│   ├── regulator:regulator.0--i2c:0-0050 -> ../../devices/virtual/devlink/regulator:regulator.0--i2c:0-0050
+│   └── serio:serio3--i2c:0-002c -> ../../devices/virtual/devlink/serio:serio3--i2c:0-002c
+├── dma
+├── dma_heap
+│   └── system -> ../../devices/virtual/dma_heap/system
+├── dmi
+│   └── id -> ../../devices/virtual/dmi/id
+├── drm
+│   ├── card0 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0
+│   ├── card0-DP-1 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-DP-1
+│   ├── card0-DP-2 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-DP-2
+│   ├── card0-eDP-1 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1
+│   ├── card0-HDMI-A-1 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-HDMI-A-1
+│   ├── card0-HDMI-A-2 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-HDMI-A-2
+│   ├── renderD128 -> ../../devices/pci0000:00/0000:00:02.0/drm/renderD128
+│   └── version
+├── drm_dp_aux_dev
+│   ├── drm_dp_aux0 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/drm_dp_aux0
+│   ├── drm_dp_aux1 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-DP-1/drm_dp_aux1
+│   └── drm_dp_aux2 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-DP-2/drm_dp_aux2
+├── firmware
+│   └── timeout
+├── gpio
+│   ├── export
+│   └── unexport
+├── graphics
+│   ├── fb0 -> ../../devices/pci0000:00/0000:00:02.0/graphics/fb0
+│   └── fbcon -> ../../devices/virtual/graphics/fbcon
+├── hidraw
+│   ├── hidraw0 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/hidraw/hidraw0
+│   └── hidraw1 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.1/0003:256C:006D.0002/hidraw/hidraw1
+├── hwmon
+│   ├── hwmon0 -> ../../devices/virtual/thermal/thermal_zone0/hwmon0
+│   ├── hwmon1 -> ../../devices/pci0000:00/0000:00:1c.5/0000:04:00.0/nvme/nvme0/hwmon1
+│   ├── hwmon2 -> ../../devices/platform/ACPI0003:00/power_supply/AC/hwmon2
+│   ├── hwmon3 -> ../../devices/platform/hp-wmi/hwmon/hwmon3
+│   └── hwmon4 -> ../../devices/platform/coretemp.0/hwmon/hwmon4
+├── ieee80211
+│   └── phy0 -> ../../devices/pci0000:00/0000:00:1c.3/0000:03:00.0/ieee80211/phy0
+├── input
+│   ├── event0 -> ../../devices/platform/i8042/serio0/input/input0/event0
+│   ├── event1 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0E:00/input/input5/event1
+│   ├── event10 -> ../../devices/platform/lis3lv02d/input/input18/event10
+│   ├── event11 -> ../../devices/pci0000:00/0000:00:1f.3/i2c-0/0-002c/rmi4-00/input/input17/event11
+│   ├── event12 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/input19/event12
+│   ├── event13 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/input20/event13
+│   ├── event14 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/input21/event14
+│   ├── event15 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/input22/event15
+│   ├── event16 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/input23/event16
+│   ├── event17 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/input24/event17
+│   ├── event18 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input25/event18
+│   ├── event19 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input26/event19
+│   ├── event2 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0D:00/input/input6/event2
+│   ├── event20 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input27/event20
+│   ├── event21 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input28/event21
+│   ├── event3 -> ../../devices/LNXSYSTM:00/LNXPWRBN:00/input/input7/event3
+│   ├── event4 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.1/0003:256C:006D.0002/input/input30/event4
+│   ├── event6 -> ../../devices/platform/i8042/serio2/input/input9/event6
+│   ├── event7 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/LNXVIDEO:00/input/input13/event7
+│   ├── event8 -> ../../devices/platform/pcspkr/input/input15/event8
+│   ├── event9 -> ../../devices/virtual/input/input16/event9
+│   ├── input0 -> ../../devices/platform/i8042/serio0/input/input0
+│   ├── input13 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/LNXVIDEO:00/input/input13
+│   ├── input15 -> ../../devices/platform/pcspkr/input/input15
+│   ├── input16 -> ../../devices/virtual/input/input16
+│   ├── input17 -> ../../devices/pci0000:00/0000:00:1f.3/i2c-0/0-002c/rmi4-00/input/input17
+│   ├── input18 -> ../../devices/platform/lis3lv02d/input/input18
+│   ├── input19 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/input19
+│   ├── input20 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/input20
+│   ├── input21 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/input21
+│   ├── input22 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/input22
+│   ├── input23 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/input23
+│   ├── input24 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/input24
+│   ├── input25 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input25
+│   ├── input26 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input26
+│   ├── input27 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input27
+│   ├── input28 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input28
+│   ├── input30 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.1/0003:256C:006D.0002/input/input30
+│   ├── input5 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0E:00/input/input5
+│   ├── input6 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0D:00/input/input6
+│   ├── input7 -> ../../devices/LNXSYSTM:00/LNXPWRBN:00/input/input7
+│   ├── input9 -> ../../devices/platform/i8042/serio2/input/input9
+│   ├── js0 -> ../../devices/platform/lis3lv02d/input/input18/js0
+│   ├── js1 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input26/js1
+│   ├── js2 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input27/js2
+│   ├── js3 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input28/js3
+│   ├── mice -> ../../devices/virtual/input/mice
+│   ├── mouse1 -> ../../devices/platform/i8042/serio2/input/input9/mouse1
+│   ├── mouse2 -> ../../devices/pci0000:00/0000:00:1f.3/i2c-0/0-002c/rmi4-00/input/input17/mouse2
+│   ├── mouse3 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input25/mouse3
+│   └── mouse4 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:256C:006D.0001/input/input28/mouse4
+├── intel_scu_ipc
+├── iommu
+│   └── dmar1 -> ../../devices/virtual/iommu/dmar1
+├── leds
+│   ├── hp::hddprotect -> ../../devices/virtual/leds/hp::hddprotect
+│   ├── input0::capslock -> ../../devices/platform/i8042/serio0/input/input0/input0::capslock
+│   ├── input0::numlock -> ../../devices/platform/i8042/serio0/input/input0/input0::numlock
+│   ├── input0::scrolllock -> ../../devices/platform/i8042/serio0/input/input0/input0::scrolllock
+│   └── phy0-led -> ../../devices/pci0000:00/0000:00:1c.3/0000:03:00.0/leds/phy0-led
+├── lirc
+├── mei
+│   └── mei0 -> ../../devices/pci0000:00/0000:00:16.0/mei/mei0
+├── mem
+│   ├── full -> ../../devices/virtual/mem/full
+│   ├── kmsg -> ../../devices/virtual/mem/kmsg
+│   ├── mem -> ../../devices/virtual/mem/mem
+│   ├── null -> ../../devices/virtual/mem/null
+│   ├── port -> ../../devices/virtual/mem/port
+│   ├── random -> ../../devices/virtual/mem/random
+│   ├── urandom -> ../../devices/virtual/mem/urandom
+│   └── zero -> ../../devices/virtual/mem/zero
+├── misc
+│   ├── autofs -> ../../devices/virtual/misc/autofs
+│   ├── cpu_dma_latency -> ../../devices/virtual/misc/cpu_dma_latency
+│   ├── device-mapper -> ../../devices/virtual/misc/device-mapper
+│   ├── freefall -> ../../devices/virtual/misc/freefall
+│   ├── fuse -> ../../devices/virtual/misc/fuse
+│   ├── hpet -> ../../devices/virtual/misc/hpet
+│   ├── hw_random -> ../../devices/virtual/misc/hw_random
+│   ├── kvm -> ../../devices/virtual/misc/kvm
+│   ├── loop-control -> ../../devices/virtual/misc/loop-control
+│   ├── psaux -> ../../devices/virtual/misc/psaux
+│   ├── rfkill -> ../../devices/virtual/misc/rfkill
+│   ├── snapshot -> ../../devices/virtual/misc/snapshot
+│   ├── udmabuf -> ../../devices/virtual/misc/udmabuf
+│   ├── userfaultfd -> ../../devices/virtual/misc/userfaultfd
+│   ├── vga_arbiter -> ../../devices/virtual/misc/vga_arbiter
+│   └── watchdog -> ../../devices/pci0000:00/0000:00:1f.0/iTCO_wdt.1.auto/misc/watchdog
+├── mmc_host
+│   └── mmc0 -> ../../devices/pci0000:00/0000:00:1c.1/0000:02:00.0/rtsx_pci_sdmmc.0/mmc_host/mmc0
+├── net
+│   ├── lo -> ../../devices/virtual/net/lo
+│   └── wlo1 -> ../../devices/pci0000:00/0000:00:1c.3/0000:03:00.0/net/wlo1
+├── nvme
+│   └── nvme0 -> ../../devices/pci0000:00/0000:00:1c.5/0000:04:00.0/nvme/nvme0
+├── nvme-generic
+│   └── ng0n1 -> ../../devices/pci0000:00/0000:00:1c.5/0000:04:00.0/nvme/nvme0/ng0n1
+├── nvme-subsystem
+│   └── nvme-subsys0 -> ../../devices/virtual/nvme-subsystem/nvme-subsys0
+├── pci_bus
+│   ├── 0000:00 -> ../../devices/pci0000:00/pci_bus/0000:00
+│   ├── 0000:01 -> ../../devices/pci0000:00/0000:00:1c.0/pci_bus/0000:01
+│   ├── 0000:02 -> ../../devices/pci0000:00/0000:00:1c.1/pci_bus/0000:02
+│   ├── 0000:03 -> ../../devices/pci0000:00/0000:00:1c.3/pci_bus/0000:03
+│   └── 0000:04 -> ../../devices/pci0000:00/0000:00:1c.5/pci_bus/0000:04
+├── phy
+├── powercap
+│   ├── intel-rapl -> ../../devices/virtual/powercap/intel-rapl
+│   ├── intel-rapl:0 -> ../../devices/virtual/powercap/intel-rapl/intel-rapl:0
+│   ├── intel-rapl:0:0 -> ../../devices/virtual/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:0
+│   ├── intel-rapl:0:1 -> ../../devices/virtual/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:1
+│   └── intel-rapl:0:2 -> ../../devices/virtual/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:2
+├── power_supply
+│   └── AC -> ../../devices/platform/ACPI0003:00/power_supply/AC
+├── pps
+├── ptp
+│   └── ptp0 -> ../../devices/pci0000:00/0000:00:1c.3/0000:03:00.0/ptp/ptp0
+├── pwm
+├── rc
+├── regulator
+│   └── regulator.0 -> ../../devices/platform/reg-dummy/regulator/regulator.0
+├── rfkill
+│   ├── rfkill0 -> ../../devices/pci0000:00/0000:00:1c.3/0000:03:00.0/ieee80211/phy0/rfkill0
+│   └── rfkill1 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-4/1-4:1.0/bluetooth/hci0/rfkill1
+├── rtc
+│   └── rtc0 -> ../../devices/pnp0/00:02/rtc/rtc0
+├── scsi_device
+│   └── 1:0:0:0 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0/scsi_device/1:0:0:0
+├── scsi_disk
+│   └── 1:0:0:0 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0/scsi_disk/1:0:0:0
+├── scsi_generic
+│   └── sg0 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0/scsi_generic/sg0
+├── scsi_host
+│   ├── host0 -> ../../devices/pci0000:00/0000:00:1f.2/ata1/host0/scsi_host/host0
+│   └── host1 -> ../../devices/pci0000:00/0000:00:1f.2/ata2/host1/scsi_host/host1
+├── sound
+│   ├── card0 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0
+│   ├── card1 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1
+│   ├── controlC0 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/controlC0
+│   ├── controlC1 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/controlC1
+│   ├── hwC0D0 -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/hwC0D0
+│   ├── hwC1D0 -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/hwC1D0
+│   ├── pcmC0D3p -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/pcmC0D3p
+│   ├── pcmC0D7p -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/pcmC0D7p
+│   ├── pcmC0D8p -> ../../devices/pci0000:00/0000:00:03.0/sound/card0/pcmC0D8p
+│   ├── pcmC1D0c -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/pcmC1D0c
+│   ├── pcmC1D0p -> ../../devices/pci0000:00/0000:00:1b.0/sound/card1/pcmC1D0p
+│   └── timer -> ../../devices/virtual/sound/timer
+├── spidev
+├── spi_master
+├── thermal
+│   ├── cooling_device0 -> ../../devices/virtual/thermal/cooling_device0
+│   ├── cooling_device1 -> ../../devices/virtual/thermal/cooling_device1
+│   ├── cooling_device2 -> ../../devices/virtual/thermal/cooling_device2
+│   ├── cooling_device3 -> ../../devices/virtual/thermal/cooling_device3
+│   ├── cooling_device4 -> ../../devices/virtual/thermal/cooling_device4
+│   ├── thermal_zone0 -> ../../devices/virtual/thermal/thermal_zone0
+│   ├── thermal_zone1 -> ../../devices/virtual/thermal/thermal_zone1
+│   ├── thermal_zone2 -> ../../devices/virtual/thermal/thermal_zone2
+│   ├── thermal_zone3 -> ../../devices/virtual/thermal/thermal_zone3
+│   ├── thermal_zone4 -> ../../devices/virtual/thermal/thermal_zone4
+│   ├── thermal_zone5 -> ../../devices/virtual/thermal/thermal_zone5
+│   └── thermal_zone6 -> ../../devices/virtual/thermal/thermal_zone6
+├── tpm
+├── tpmrm
+├── tty
+│   ├── console -> ../../devices/virtual/tty/console
+│   ├── ptmx -> ../../devices/virtual/tty/ptmx
+│   ├── tty -> ../../devices/virtual/tty/tty
+│   ├── tty0 -> ../../devices/virtual/tty/tty0
+│   ├── tty1 -> ../../devices/virtual/tty/tty1
+│   ├── tty10 -> ../../devices/virtual/tty/tty10
+│   ├── tty11 -> ../../devices/virtual/tty/tty11
+│   ├── tty12 -> ../../devices/virtual/tty/tty12
+│   ├── tty13 -> ../../devices/virtual/tty/tty13
+│   ├── tty14 -> ../../devices/virtual/tty/tty14
+│   ├── tty15 -> ../../devices/virtual/tty/tty15
+│   ├── tty16 -> ../../devices/virtual/tty/tty16
+│   ├── tty17 -> ../../devices/virtual/tty/tty17
+│   ├── tty18 -> ../../devices/virtual/tty/tty18
+│   ├── tty19 -> ../../devices/virtual/tty/tty19
+│   ├── tty2 -> ../../devices/virtual/tty/tty2
+│   ├── tty20 -> ../../devices/virtual/tty/tty20
+│   ├── tty21 -> ../../devices/virtual/tty/tty21
+│   ├── tty22 -> ../../devices/virtual/tty/tty22
+│   ├── tty23 -> ../../devices/virtual/tty/tty23
+│   ├── tty24 -> ../../devices/virtual/tty/tty24
+│   ├── tty25 -> ../../devices/virtual/tty/tty25
+│   ├── tty26 -> ../../devices/virtual/tty/tty26
+│   ├── tty27 -> ../../devices/virtual/tty/tty27
+│   ├── tty28 -> ../../devices/virtual/tty/tty28
+│   ├── tty29 -> ../../devices/virtual/tty/tty29
+│   ├── tty3 -> ../../devices/virtual/tty/tty3
+│   ├── tty30 -> ../../devices/virtual/tty/tty30
+│   ├── tty31 -> ../../devices/virtual/tty/tty31
+│   ├── tty32 -> ../../devices/virtual/tty/tty32
+│   ├── tty33 -> ../../devices/virtual/tty/tty33
+│   ├── tty34 -> ../../devices/virtual/tty/tty34
+│   ├── tty35 -> ../../devices/virtual/tty/tty35
+│   ├── tty36 -> ../../devices/virtual/tty/tty36
+│   ├── tty37 -> ../../devices/virtual/tty/tty37
+│   ├── tty38 -> ../../devices/virtual/tty/tty38
+│   ├── tty39 -> ../../devices/virtual/tty/tty39
+│   ├── tty4 -> ../../devices/virtual/tty/tty4
+│   ├── tty40 -> ../../devices/virtual/tty/tty40
+│   ├── tty41 -> ../../devices/virtual/tty/tty41
+│   ├── tty42 -> ../../devices/virtual/tty/tty42
+│   ├── tty43 -> ../../devices/virtual/tty/tty43
+│   ├── tty44 -> ../../devices/virtual/tty/tty44
+│   ├── tty45 -> ../../devices/virtual/tty/tty45
+│   ├── tty46 -> ../../devices/virtual/tty/tty46
+│   ├── tty47 -> ../../devices/virtual/tty/tty47
+│   ├── tty48 -> ../../devices/virtual/tty/tty48
+│   ├── tty49 -> ../../devices/virtual/tty/tty49
+│   ├── tty5 -> ../../devices/virtual/tty/tty5
+│   ├── tty50 -> ../../devices/virtual/tty/tty50
+│   ├── tty51 -> ../../devices/virtual/tty/tty51
+│   ├── tty52 -> ../../devices/virtual/tty/tty52
+│   ├── tty53 -> ../../devices/virtual/tty/tty53
+│   ├── tty54 -> ../../devices/virtual/tty/tty54
+│   ├── tty55 -> ../../devices/virtual/tty/tty55
+│   ├── tty56 -> ../../devices/virtual/tty/tty56
+│   ├── tty57 -> ../../devices/virtual/tty/tty57
+│   ├── tty58 -> ../../devices/virtual/tty/tty58
+│   ├── tty59 -> ../../devices/virtual/tty/tty59
+│   ├── tty6 -> ../../devices/virtual/tty/tty6
+│   ├── tty60 -> ../../devices/virtual/tty/tty60
+│   ├── tty61 -> ../../devices/virtual/tty/tty61
+│   ├── tty62 -> ../../devices/virtual/tty/tty62
+│   ├── tty63 -> ../../devices/virtual/tty/tty63
+│   ├── tty7 -> ../../devices/virtual/tty/tty7
+│   ├── tty8 -> ../../devices/virtual/tty/tty8
+│   ├── tty9 -> ../../devices/virtual/tty/tty9
+│   ├── ttyS0 -> ../../devices/platform/serial8250/serial8250:0/serial8250:0.0/tty/ttyS0
+│   ├── ttyS1 -> ../../devices/platform/serial8250/serial8250:0/serial8250:0.1/tty/ttyS1
+│   ├── ttyS2 -> ../../devices/platform/serial8250/serial8250:0/serial8250:0.2/tty/ttyS2
+│   └── ttyS3 -> ../../devices/platform/serial8250/serial8250:0/serial8250:0.3/tty/ttyS3
+├── usbmisc
+├── vc
+│   ├── vcs -> ../../devices/virtual/vc/vcs
+│   ├── vcs1 -> ../../devices/virtual/vc/vcs1
+│   ├── vcs2 -> ../../devices/virtual/vc/vcs2
+│   ├── vcs3 -> ../../devices/virtual/vc/vcs3
+│   ├── vcs4 -> ../../devices/virtual/vc/vcs4
+│   ├── vcs5 -> ../../devices/virtual/vc/vcs5
+│   ├── vcs6 -> ../../devices/virtual/vc/vcs6
+│   ├── vcsa -> ../../devices/virtual/vc/vcsa
+│   ├── vcsa1 -> ../../devices/virtual/vc/vcsa1
+│   ├── vcsa2 -> ../../devices/virtual/vc/vcsa2
+│   ├── vcsa3 -> ../../devices/virtual/vc/vcsa3
+│   ├── vcsa4 -> ../../devices/virtual/vc/vcsa4
+│   ├── vcsa5 -> ../../devices/virtual/vc/vcsa5
+│   ├── vcsa6 -> ../../devices/virtual/vc/vcsa6
+│   ├── vcsu -> ../../devices/virtual/vc/vcsu
+│   ├── vcsu1 -> ../../devices/virtual/vc/vcsu1
+│   ├── vcsu2 -> ../../devices/virtual/vc/vcsu2
+│   ├── vcsu3 -> ../../devices/virtual/vc/vcsu3
+│   ├── vcsu4 -> ../../devices/virtual/vc/vcsu4
+│   ├── vcsu5 -> ../../devices/virtual/vc/vcsu5
+│   └── vcsu6 -> ../../devices/virtual/vc/vcsu6
+├── video4linux
+│   ├── video0 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-7/1-7:1.0/video4linux/video0
+│   └── video1 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-7/1-7:1.0/video4linux/video1
+├── vtconsole
+│   ├── vtcon0 -> ../../devices/virtual/vtconsole/vtcon0
+│   └── vtcon1 -> ../../devices/virtual/vtconsole/vtcon1
+├── wakeup
+│   ├── wakeup0 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/LNXVIDEO:00/wakeup/wakeup0
+│   ├── wakeup1 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:4b/wakeup/wakeup1
+│   ├── wakeup10 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:37/wakeup/wakeup10
+│   ├── wakeup11 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:38/wakeup/wakeup11
+│   ├── wakeup12 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:3f/wakeup/wakeup12
+│   ├── wakeup13 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:44/device:45/wakeup/wakeup13
+│   ├── wakeup14 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/wakeup/wakeup14
+│   ├── wakeup15 -> ../../devices/LNXSYSTM:00/LNXPWRBN:00/wakeup/wakeup15
+│   ├── wakeup16 -> ../../devices/pnp0/00:02/wakeup/wakeup16
+│   ├── wakeup17 -> ../../devices/pnp0/00:02/rtc/rtc0/alarmtimer.0.auto/wakeup/wakeup17
+│   ├── wakeup18 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0E:00/wakeup/wakeup18
+│   ├── wakeup19 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0D:00/wakeup/wakeup19
+│   ├── wakeup2 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:1c/wakeup/wakeup2
+│   ├── wakeup20 -> ../../devices/pci0000:00/0000:00:14.0/wakeup/wakeup20
+│   ├── wakeup21 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C14:00/wakeup/wakeup21
+│   ├── wakeup22 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0A:01/wakeup/wakeup22
+│   ├── wakeup23 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0A:00/wakeup/wakeup23
+│   ├── wakeup24 -> ../../devices/pci0000:00/0000:00:1d.0/wakeup/wakeup24
+│   ├── wakeup25 -> ../../devices/virtual/wakeup/wakeup25
+│   ├── wakeup26 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0003:00/wakeup/wakeup26
+│   ├── wakeup27 -> ../../devices/platform/ACPI0003:00/power_supply/AC/wakeup27
+│   ├── wakeup28 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/HPQ6007:00/wakeup/wakeup28
+│   ├── wakeup3 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:0a/wakeup/wakeup3
+│   ├── wakeup4 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:40/wakeup/wakeup4
+│   ├── wakeup5 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:41/wakeup/wakeup5
+│   ├── wakeup6 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:44/wakeup/wakeup6
+│   ├── wakeup7 -> ../../devices/pci0000:00/0000:00:1c.3/wakeup/wakeup7
+│   ├── wakeup8 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:48/wakeup/wakeup8
+│   └── wakeup9 -> ../../devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:0b/wakeup/wakeup9
+├── watchdog
+│   └── watchdog0 -> ../../devices/pci0000:00/0000:00:1f.0/iTCO_wdt.1.auto/watchdog/watchdog0
+└── wmi_bus
+    └── wmi_bus-PNP0C14:00 -> ../../devices/platform/PNP0C14:00/wmi_bus/wmi_bus-PNP0C14:00
+
+399 directories, 5 files
